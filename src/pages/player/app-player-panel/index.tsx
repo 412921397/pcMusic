@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { PanelWrapper } from "./style";
 import QLPlayerHeader from "./cpns/play-header";

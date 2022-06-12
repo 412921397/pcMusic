@@ -58,9 +58,10 @@ export const SongsCoverWrapper = styled.div`
     font-size: 14px;
     color: #000;
     margin-top: 5px;
-  }
-  .cover-bottom:hover {
-    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 
   .cover-source {

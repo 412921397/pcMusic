@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { RecommendWrapper, Content, RecommendLeft, RecommendRight } from "./style";
 import QLTopbannner from "./c-cpns/top-banner";

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { NavLink } from "react-router-dom";
 
 import { HeaderWrapper } from "./style";
@@ -21,7 +21,7 @@ const QLThemeHeaderRCM = memo((props: themeProps) => {
             {keywords.map((item: any) => {
               return (
                 <div className="item" key={item}>
-                  <a href="todo">{item}</a>
+                  <NavLink to={`/discover/songs?name=${item}`}>{item}</NavLink>
                   {item !== keywords[keywords.length - 1] && <span className="divider">|</span>}
                 </div>
               );

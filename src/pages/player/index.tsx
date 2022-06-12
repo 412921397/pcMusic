@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { PlayerWrapper, PlayerLeft, PlayerRight } from "./style";
 import QLPlayerInfo from "./cpns/player-info";

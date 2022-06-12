@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { PaginationWrapper } from "./style";
 import { Pagination } from "antd";

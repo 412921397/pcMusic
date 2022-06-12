@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { QLArtistWrapper } from "./style";
 import QLArtistCategory from "./cpns/artist-category";

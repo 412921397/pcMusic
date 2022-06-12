@@ -64,7 +64,7 @@ export default memo(function QLPlayerBar(props) {
     currentSong?.ar && `/${currentSong?.ar[1]?.name}` !== "/undefined"
       ? currentSong?.ar && `/${currentSong?.ar[1]?.name}`
       : "";
-  const singerName = (currentSong?.ar && currentSong?.ar[0]?.name + secSinger) ?? "未知歌手";
+  const singerName = (currentSong?.ar && currentSong?.ar[0]?.name + secSinger) ?? "";
   /** 总时长 */
   const duration = currentSong?.dt ?? 0;
   /** 歌曲总时长 */

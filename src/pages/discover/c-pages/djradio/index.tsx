@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { DjRadioWrapper } from "./style";
 import QLRadioCategory from "./cpns/radio-category";

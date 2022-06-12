@@ -1,15 +1,11 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { SongsWrapper } from "./style";
 import QLSongsHeader from "./cpns/songs-header";
 import QLSongsList from "./cpns/songs-list";
 
-import {
-  getSongCategoryAction,
-  getSongCategoryListAction,
-  changeCurrentCategoryAction
-} from "./store/actionCreators";
+import { getSongCategoryAction, getSongCategoryListAction } from "./store/actionCreators";
 
 export default memo(function QLSongs() {
   /** 异步请求redux数据 */

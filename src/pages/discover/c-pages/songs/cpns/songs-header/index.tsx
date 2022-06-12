@@ -1,4 +1,5 @@
-import React, { memo, useState, useCallback } from "react";
+import { memo, useState, useCallback, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { changeCurrentCategoryAction, getSongCategoryListAction } from "../../store/actionCreators";
@@ -7,6 +8,8 @@ import { HeaderWrapper, HeaderLeft, HeaderRight } from "./style";
 import QLSongsCateGory from "../songs-category";
 
 export default memo(function QLSongsHeader() {
+  /** 获取路由的参数 */
+  const [params] = useSearchParams();
   /** 选框默认状态 */
   const [showCategory, setShowCategory] = useState(false);
   /** 默认选中的分类 */
@@ -21,6 +24,12 @@ export default memo(function QLSongsHeader() {
     }),
     shallowEqual
   );
+
+  /** 获取跳转后的参数 */
+  useEffect(() => {
+    const navgateName = params && params.getAll("name");
+    selectCategory(navgateName[0]);
+  }, [params]);
 
   /** 选择分类 */
   const selectCategory = useCallback(

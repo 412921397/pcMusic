@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { getCount, getSizeImage } from "@/utils/format-utils";
 import { SongsCoverWrapper } from "./style";

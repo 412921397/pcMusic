@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { getSizeImage } from "@/utils/format-utils";
 import { CoverWrapper } from "./style";
