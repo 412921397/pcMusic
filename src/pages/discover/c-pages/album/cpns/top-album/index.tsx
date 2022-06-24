@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { getTopAlbumsAction } from "../../store/actionCreators";
@@ -30,7 +30,7 @@ export default memo(function QLTopAlbum() {
 
   /** 分页点击 */
   const onPageChange = useCallback(
-    (page: number, pageSize: number) => {
+    (page: number) => {
       setCurrentPage(page);
       dispatch(getTopAlbumsAction(page) as any);
     },

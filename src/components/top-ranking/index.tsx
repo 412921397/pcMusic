@@ -40,7 +40,7 @@ export default memo(function QLTopRanking(props: topRankingProps) {
               <div className="info">
                 <span className="name text-nowrap">{item.name}</span>
                 <div className="operate">
-                  <button className="btn sprite_02 play" onClick={(e) => playMusic(item?.id)}>
+                  <button className="btn sprite_02 play" onClick={() => playMusic(item?.id)}>
                     &gt;
                   </button>
                   <button className="btn sprite_icon2 addto">.</button>

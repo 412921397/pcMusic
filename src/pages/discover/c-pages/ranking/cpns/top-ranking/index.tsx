@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import {
@@ -12,7 +12,7 @@ import { TopRankingWrapper } from "./style";
 
 import { getSizeImage } from "@/utils/format-utils";
 
-export default memo(function TopRanking(props) {
+export default memo(function TopRanking() {
   /** redux数据 */
   const { topList, currentIndex } = useSelector(
     (state: any) => ({
@@ -54,7 +54,7 @@ export default memo(function TopRanking(props) {
             {header}
             <div
               className={classNames("item", { active: index === currentIndex })}
-              onClick={(e) => hanldeItemClick(index)}
+              onClick={() => hanldeItemClick(index)}
             >
               <img src={getSizeImage(item?.coverImgUrl, 40)} alt={item?.name} />
               <div className="info">

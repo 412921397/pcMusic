@@ -46,7 +46,7 @@ export default memo(function QLSongsHeader() {
     <HeaderWrapper>
       <HeaderLeft>
         <span className="title">{currentCategory}</span>
-        <button className="select" onClick={(e) => setShowCategory(!showCategory)}>
+        <button className="select" onClick={() => setShowCategory(!showCategory)}>
           <span>选择分类</span>
           <i className="sprite_icon2" />
         </button>

@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { changeCurrentSongAction } from "../../../store/actionCreators";
@@ -30,7 +30,7 @@ export default memo(function PlayHeader() {
             <i className="sprite_playlist icon favor" />
             收藏全部
           </button>
-          <button onClick={(e) => clearMusic()}>
+          <button onClick={() => clearMusic()}>
             <i className="sprite_playlist icon remove" />
             清除
           </button>

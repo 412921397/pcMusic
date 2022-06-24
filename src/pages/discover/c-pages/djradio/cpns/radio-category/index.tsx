@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useRef } from "react";
+import { memo, useCallback, useEffect, useRef } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import classnames from "classnames";
@@ -46,7 +46,7 @@ export default memo(function QLRadioCategory() {
 
   return (
     <CategoryWrapper>
-      <div className="arrow arrow-left" onClick={(e) => carouselRef.current.prev()} />
+      <div className="arrow arrow-left" onClick={() => carouselRef.current.prev()} />
       <CategoryContent>
         <Carousel ref={carouselRef}>
           {Array(page)
@@ -61,7 +61,7 @@ export default memo(function QLRadioCategory() {
                         className={classnames("category-item", {
                           active: currentId === item?.id
                         })}
-                        onClick={(e) => handleRadioCategory(item?.id)}
+                        onClick={() => handleRadioCategory(item?.id)}
                       >
                         <CategoryItemImage className="image" imgUrl={item?.picWebUrl} />
                         <span>{item?.name}</span>
@@ -73,7 +73,7 @@ export default memo(function QLRadioCategory() {
             })}
         </Carousel>
       </CategoryContent>
-      <div className="arrow arrow-right" onClick={(e) => carouselRef.current.next()} />
+      <div className="arrow arrow-right" onClick={() => carouselRef.current.next()} />
     </CategoryWrapper>
   );
 });

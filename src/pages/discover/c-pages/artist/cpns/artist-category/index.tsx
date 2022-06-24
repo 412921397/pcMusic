@@ -34,7 +34,7 @@ export default memo(function QLArtistCategory() {
 
           return (
             <CategoryItem key={item?.name} className={classNames({ active: isSelect })}>
-              <span onClick={(e) => selectArtist(area, item)}>{item?.name}</span>
+              <span onClick={() => selectArtist(area, item)}>{item?.name}</span>
             </CategoryItem>
           );
         })}

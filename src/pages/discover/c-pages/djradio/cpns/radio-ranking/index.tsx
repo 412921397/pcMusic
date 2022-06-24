@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { getDjRadiosAction } from "../../store/actionCreators";
@@ -27,7 +27,7 @@ export default memo(function QLRadioRanking() {
   }, [dispatch, currentId]);
 
   /** 分页数据 */
-  const onPageChange = (page: number, pageSize: number) => {
+  const onPageChange = (page: number) => {
     setCurrentPage(page);
     dispatch(getDjRadiosAction(currentId, page * 30) as any);
   };

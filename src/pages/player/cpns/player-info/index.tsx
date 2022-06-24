@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import { memo, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 
 import { InfoWrapper, InfoLeft, InfoRight } from "./style";
@@ -70,7 +70,7 @@ export default memo(function QLPlayerInfo() {
             })}
           </div>
         </div>
-        <div className="lyric-control" onClick={(e) => setIsSperead(!isSpread)}>
+        <div className="lyric-control" onClick={() => setIsSperead(!isSpread)}>
           <a className="lyric-btn">{isSpread ? "收起" : "展开"}</a>
           <i className="sprite_icon2" />
         </div>

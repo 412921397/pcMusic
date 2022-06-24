@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { getNewAlbumsAction } from "../../store/actionCreators";
@@ -29,7 +29,7 @@ export default memo(function QLHotalbum() {
     <AlbumWrapper>
       <QLThemeHeaderRCM title="新碟上架" link="/discover/album" />
       <div className="content">
-        <div className="arrow arrow-left sprite_02" onClick={(e) => pageRef.current.prev()}></div>
+        <div className="arrow arrow-left sprite_02" onClick={() => pageRef.current.prev()}></div>
         <div className="album">
           <Carousel dots={false} ref={pageRef}>
             {[0, 1].map((item: number) => {
@@ -45,7 +45,7 @@ export default memo(function QLHotalbum() {
             })}
           </Carousel>
         </div>
-        <div className="arrow arrow-right sprite_02" onClick={(e) => pageRef.current.next()}></div>
+        <div className="arrow arrow-right sprite_02" onClick={() => pageRef.current.next()}></div>
       </div>
     </AlbumWrapper>
   );

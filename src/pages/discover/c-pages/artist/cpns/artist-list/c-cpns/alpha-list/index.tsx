@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import classNames from "classnames";
@@ -36,7 +36,7 @@ export default memo(function QLAlphaList() {
           const isActive = currentAlpha === item;
           return (
             <div key={item} className={classNames("item", { active: isActive })}>
-              <span onClick={(e) => setCurrentAlpha(item)}>
+              <span onClick={() => setCurrentAlpha(item)}>
                 {item === "0" ? "其他" : item === "-1" ? "热门" : item.toUpperCase()}
               </span>
             </div>

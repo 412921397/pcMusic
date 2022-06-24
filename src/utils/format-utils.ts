@@ -21,12 +21,12 @@ export function getPlaySong(id: number) {
 }
 
 export function formatDate(time: number, fmt: string) {
-  let date = new Date(time);
+  const date = new Date(time);
 
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
   }
-  let o: any = {
+  const o: any = {
     "M+": date.getMonth() + 1,
     "d+": date.getDate(),
     "h+": date.getHours(),
@@ -36,7 +36,7 @@ export function formatDate(time: number, fmt: string) {
   let k: any;
   for (k in o) {
     if (new RegExp(`(${k})`).test(fmt)) {
-      let str = o[k] + "";
+      const str = o[k] + "";
       fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? str : padLeftZero(str));
     }
   }
@@ -47,10 +47,10 @@ function padLeftZero(str: string) {
   return ("00" + str).substr(str.length);
 }
 
-export function formatMonthDay(time: number = 0) {
+export function formatMonthDay(time = 0) {
   return formatDate(time, "MM月dd日");
 }
 
-export function formatMinuteSecond(time: number = 0) {
+export function formatMinuteSecond(time = 0) {
   return formatDate(time, "mm:ss");
 }

@@ -1,5 +1,5 @@
 /* eslint-disable no-labels */
-import React, { memo, useState, useEffect, useRef, useCallback } from "react";
+import { memo, useState, useEffect, useRef, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { getTopBannerAction } from "../../store/actionCreators";
@@ -57,8 +57,8 @@ export default memo(function QLTopBanner() {
           </BannerLeft>
           <BannerRight></BannerRight>
           <BannerControl>
-            <div className="btn left" onClick={(e) => bannerRef.current.prev()} />
-            <div className="btn right" onClick={(e) => bannerRef.current.next()} />
+            <div className="btn left" onClick={() => bannerRef.current.prev()} />
+            <div className="btn right" onClick={() => bannerRef.current.next()} />
           </BannerControl>
         </div>
       </BannerWrapper>

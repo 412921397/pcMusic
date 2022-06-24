@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import { OperationBarWrapper } from "./style";
@@ -25,7 +25,7 @@ export default memo(function QLSongOperationBar(props: QLSongOperationBarProps) 
   return (
     <OperationBarWrapper>
       <span className="play">
-        <a className="play-icon sprite_button" onClick={(e) => playMusic()}>
+        <a className="play-icon sprite_button" onClick={() => playMusic()}>
           <span className="play sprite_button">
             <i className="sprite_button"></i>
             <span>播放</span>

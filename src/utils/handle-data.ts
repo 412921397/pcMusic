@@ -3,7 +3,7 @@ export function handleSongsCategory(data: any) {
   const category = data.categories;
 
   // 2.创建类别数据结构
-  const categoryData: any = Object.entries(category).map(([key, value]) => {
+  const categoryData: any = Object.entries(category).map(([, value]) => {
     return {
       name: value,
       subs: []
@@ -20,9 +20,9 @@ export function handleSongsCategory(data: any) {
 
 // 获取歌手字母类别
 export function generateSingerAlpha() {
-  let alphabets = ["-1"];
-  let start = "A".charCodeAt(0);
-  let last = "Z".charCodeAt(0);
+  const alphabets = ["-1"];
+  const start = "A".charCodeAt(0);
+  const last = "Z".charCodeAt(0);
   for (let i = start; i <= last; ++i) {
     alphabets.push(String.fromCharCode(i));
   }

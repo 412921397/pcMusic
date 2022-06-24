@@ -48,7 +48,7 @@ export default memo(function QLTankingList() {
                       {index < 3 ? (
                         <img src={getSizeImage(item?.al?.picUrl, 50)} alt={item?.name} />
                       ) : null}
-                      <span className="play sprite_table" onClick={(e) => playMusic(item?.id)} />
+                      <span className="play sprite_table" onClick={() => playMusic(item?.id)} />
                       <span className="name">{item?.name}</span>
                     </div>
                   </td>

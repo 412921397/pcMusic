@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import { memo, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { getSongCategoryListAction } from "../../store/actionCreators";
@@ -25,7 +25,7 @@ export default memo(function QLSongsList() {
 
   const dispatch = useDispatch();
 
-  const onPageChange = (page: number, pageSize: number) => {
+  const onPageChange = (page: number) => {
     setCurrentPage(page);
     dispatch(getSongCategoryListAction(page) as any);
   };

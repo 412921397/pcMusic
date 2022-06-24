@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import usePlayMusic from "@/hooks/usePlayMusic";
@@ -44,7 +44,7 @@ export default memo(function QLPlayerSongs() {
                 </div>
               </div>
               <div className="operate">
-                <button className="item sprite_icon3 play" onClick={(e) => playMusic(item?.id)}>
+                <button className="item sprite_icon3 play" onClick={() => playMusic(item?.id)}>
                   1
                 </button>
                 <button className="item sprite_icon3 add">2</button>

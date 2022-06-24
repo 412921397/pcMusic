@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 
 import { HeaderWrapper } from "./style";
 
-type themeProps = {
+interface themeProps {
   title: string;
   keywords?: string[];
   link?: string;
-};
+}
 
 const QLThemeHeaderRCM = memo((props: themeProps) => {
   const { title, keywords, link = "" } = props;

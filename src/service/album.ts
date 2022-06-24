@@ -13,7 +13,7 @@ export function getHotAlbums() {
  * limit : 返回数量 , 默认为 30
    offset : 偏移数量，用于分页 , 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
  */
-export function getTopAlbums(limit: number, offset: number, area: string = "ALL") {
+export function getTopAlbums(limit: number, offset: number, area = "ALL") {
   return qlRequest.get({
     url: "/album/new",
     params: {

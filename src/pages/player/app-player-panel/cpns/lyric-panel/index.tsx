@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import classNames from "classnames";
 

@@ -1,4 +1,3 @@
-import { number } from "prop-types";
 import qlRequest from "./index";
 
 /** 电台 - 分类 */
@@ -21,7 +20,7 @@ export function getDjRadioRecommend(type: number) {
 }
 
 /** 电台 - 类别热门电台 */
-export function getDjRadios(cateId: number, limit: number, offset: number = 30) {
+export function getDjRadios(cateId: number, limit: number, offset = 30) {
   return qlRequest.get({
     url: "/dj/radio/hot",
     params: {

@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 
 import { getSimiPlaylistAction } from "../../store/actionCreators";

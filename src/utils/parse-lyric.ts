@@ -18,7 +18,7 @@ export function parseLyric(lyricString: string) {
   const lineStrings = lyricString.split("\n");
 
   const lyrics = [];
-  for (let line of lineStrings) {
+  for (const line of lineStrings) {
     if (line) {
       const result: any = parseExp.exec(line);
       if (!result) continue;

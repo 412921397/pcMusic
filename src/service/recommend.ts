@@ -25,7 +25,7 @@ export function getHotRecommends(limit: number) {
   year : 年,默认本年
   month : 月,默认本月
 */
-export function getNewAlbums(limit: number, offset: number = 0, area: string = "ZH") {
+export function getNewAlbums(limit: number, offset = 0, area = "ZH") {
   return qlRequest.get({
     url: "/top/album",
     params: {
@@ -49,7 +49,7 @@ export function getTopList(id: number) {
 }
 
 /** 热门歌手 */
-export function getArtistList(limit: number = 30, cat: number = 1) {
+export function getArtistList(limit = 30, cat = 1) {
   return qlRequest.get({
     url: "/artist/list",
     params: {

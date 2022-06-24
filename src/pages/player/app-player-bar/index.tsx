@@ -13,7 +13,7 @@ import { Slider, message } from "antd";
 import { PlaybarWrapper, Control, PlayInfo, Operator } from "./style";
 import QLAppPlayerPanel from "../app-player-panel";
 
-export default memo(function QLPlayerBar(props) {
+export default memo(function QLPlayerBar() {
   // props and state
   /** 当前播放的时长 */
   const [currentTime, setCurrentTime] = useState(0);
@@ -50,10 +50,10 @@ export default memo(function QLPlayerBar(props) {
     /** 点击播放并修改状态 */
     audioRef.current
       .play()
-      .then((res: any) => {
+      .then(() => {
         setIsPlaying(true);
       })
-      .catch((err: any) => {
+      .catch(() => {
         setIsPlaying(false);
       });
   }, [currentSong]);
@@ -74,7 +74,7 @@ export default memo(function QLPlayerBar(props) {
 
   /** 当前进度条的播放时长 */
   const timeUpdate = (e: any) => {
-    let currentTime = e.target.currentTime;
+    const currentTime = e.target.currentTime;
     if (!isChanging) {
       setCurrentTime(currentTime * 1000);
       setProgress(((currentTime * 1000) / duration) * 100);
@@ -157,9 +157,9 @@ export default memo(function QLPlayerBar(props) {
     <PlaybarWrapper className="sprite_player">
       <div className="content wrap-v2">
         <Control isPlaying={isPlaying}>
-          <div className="sprite_player prev" onClick={(e) => changeMusic(-1)}></div>
-          <div className="sprite_player play" onClick={(e) => playMusic()}></div>
-          <div className="sprite_player next" onClick={(e) => changeMusic(1)}></div>
+          <div className="sprite_player prev" onClick={() => changeMusic(-1)}></div>
+          <div className="sprite_player play" onClick={() => playMusic()}></div>
+          <div className="sprite_player next" onClick={() => changeMusic(1)}></div>
         </Control>
         <PlayInfo>
           <div className="image">
@@ -191,13 +191,10 @@ export default memo(function QLPlayerBar(props) {
           </div>
           <div className="right sprite_player">
             <button className="sprite_player btn volume">.</button>
-            <button className="sprite_player btn loop" onClick={(e) => changeSequence()}>
+            <button className="sprite_player btn loop" onClick={() => changeSequence()}>
               .
             </button>
-            <button
-              className="sprite_player btn playlist"
-              onClick={(e) => setShowPanel(!showPanel)}
-            >
+            <button className="sprite_player btn playlist" onClick={() => setShowPanel(!showPanel)}>
               {playList?.length}
             </button>
           </div>
@@ -205,7 +202,7 @@ export default memo(function QLPlayerBar(props) {
         <audio
           ref={audioRef}
           onTimeUpdate={(e) => timeUpdate(e)}
-          onEnded={(e) => handleMusicEnded()}
+          onEnded={() => handleMusicEnded()}
         />
       </div>
       {showPanel && <QLAppPlayerPanel />}

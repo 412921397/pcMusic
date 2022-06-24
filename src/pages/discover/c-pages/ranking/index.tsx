@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { getTopListAction } from "./store/actionCreators";

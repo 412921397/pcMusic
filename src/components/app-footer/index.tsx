@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from "react";
+import { Fragment, memo } from "react";
 
 import { footerLinks, footerImages } from "@/common/local-data";
 
@@ -10,7 +10,7 @@ export default memo(function QLFooter() {
       <div className="wrap-v2 content">
         <FooterLeft>
           <div className="link">
-            {footerLinks.map((item, index) => {
+            {footerLinks.map((item) => {
               return (
                 <Fragment key={item.title}>
                   <a href={item.link} target="_blank" rel="noopener noreferrer">

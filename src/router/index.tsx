@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import { lazy } from "react";
 import { RouteObject, Navigate } from "react-router-dom";
 
 const QLDiscover = lazy(() => import("@/pages/discover"));

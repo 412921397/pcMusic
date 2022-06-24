@@ -1,19 +1,18 @@
 import { memo } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 
 import classNames from "classnames";
 
 import { CategoryWrapper } from "./style";
 
 interface QLSongsCategoryProps {
-  selectCategory: Function;
+  selectCategory: any;
   activeCount: string;
 }
 
 export default memo(function QLSongsCategory(props: QLSongsCategoryProps) {
   const { selectCategory, activeCount } = props;
 
-  const dispatch = useDispatch();
   /** 获取分类 */
   const { category } = useSelector(
     (state: any) => ({
@@ -26,7 +25,7 @@ export default memo(function QLSongsCategory(props: QLSongsCategoryProps) {
     <CategoryWrapper>
       <div className="arrow sprite_icon" />
       <div className="all">
-        <a className="link" onClick={(e) => selectCategory("全部")}>
+        <a className="link" onClick={() => selectCategory("全部")}>
           全部风格
         </a>
       </div>
@@ -46,7 +45,7 @@ export default memo(function QLSongsCategory(props: QLSongsCategoryProps) {
                         className={classNames("link", {
                           active: iten?.name === activeCount
                         })}
-                        onClick={(e) => selectCategory(iten?.name)}
+                        onClick={() => selectCategory(iten?.name)}
                       >
                         {iten?.name}
                       </span>

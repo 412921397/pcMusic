@@ -9,7 +9,7 @@ export function getSongCategory() {
 }
 
 /** 歌单 ( 网友精选碟 ) */
-export function getSongCategoryList(cat: string = "全部", offset: number = 0, limit: number = 35) {
+export function getSongCategoryList(cat = "全部", offset = 0, limit = 35) {
   return qlRequest.get({
     url: "/top/playlist",
     params: {

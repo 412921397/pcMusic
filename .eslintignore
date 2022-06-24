@@ -1,0 +1,9 @@
+config/
+scripts/
+node_modules/
+\.eslintrc.js
+craco.config.js
+setupProxy.js
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
