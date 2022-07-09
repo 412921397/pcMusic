@@ -16,6 +16,8 @@ module.exports = {
   rules: {
     quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: false }],
     "prettier/prettier": "error",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-empty-function": 1, // 禁止出现空函数
+    "jsx-a11y/anchor-is-valid": "off" //注销a标签的警告
   }
 };

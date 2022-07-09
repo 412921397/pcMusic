@@ -4,7 +4,7 @@ import { HeaderWrapper } from "./style";
 
 interface QLThemeHeaderNormalProps {
   title: string;
-  rightSlot?: any;
+  rightSlot?: HTMLElement | any;
 }
 
 export default memo(function QLThemeHeaderNormal(props: QLThemeHeaderNormalProps) {

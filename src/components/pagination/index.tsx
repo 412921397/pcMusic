@@ -7,7 +7,7 @@ interface QLPagenationProps {
   currentPage: number;
   total: number;
   pageSize: number;
-  onPageChange: any;
+  onPageChange: (page: number) => void;
 }
 
 export default memo(function QLPagenation(props: QLPagenationProps) {

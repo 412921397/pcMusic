@@ -4,9 +4,13 @@ import type { QLRequestInterceptors, QLRequestConfig } from "./types";
 
 import { message } from "antd";
 
+interface httpCodeType {
+  [key: number]: string;
+}
+
 const DEAFULT_LOADING = true;
 
-const httpCode: any = {
+const httpCode: httpCodeType = {
   400: "请求参数错误",
   401: "权限不足, 请重新登录",
   403: "服务器拒绝本次访问",
