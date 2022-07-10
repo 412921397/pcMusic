@@ -5,11 +5,11 @@ import { getSizeImage } from "@/utils/format-utils";
 
 import { TopRankingWrapper } from "./style";
 
-interface topRankingProps {
+interface QLTopRankingProps {
   info?: any;
 }
 
-export default memo(function QLTopRanking(props: topRankingProps) {
+export default memo(function QLTopRanking(props: QLTopRankingProps) {
   const { info } = props;
 
   /** 播放音乐 */

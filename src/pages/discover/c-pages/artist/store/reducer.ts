@@ -1,6 +1,7 @@
 import { Map } from "immutable";
 
 import * as actionTypes from "./constants";
+import { actionType } from "@/types";
 
 const defaultState = Map({
   currentArea: -1,
@@ -11,7 +12,7 @@ const defaultState = Map({
   artistList: []
 });
 
-const reducer = (state = defaultState, action: any) => {
+const reducer = (state = defaultState, action: actionType) => {
   switch (action.type) {
     case actionTypes.CHANGE_CURRENT_AREA:
       return state.set("currentArea", action.currentArea);

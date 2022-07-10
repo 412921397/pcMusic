@@ -23,6 +23,24 @@ export const HeaderWrapper = styled.div`
   }
 
   .right {
+    display: flex;
+    align-items: center;
+    .link {
+      margin-right: 20px;
+
+      i {
+        display: inline-block;
+        position: relative;
+        top: 2px;
+        width: 14px;
+        height: 15px;
+        margin-right: 2px;
+        background-position: -34px -863px;
+      }
+      a {
+        color: #4996d1;
+      }
+    }
     .count {
       color: #c20c0c;
     }

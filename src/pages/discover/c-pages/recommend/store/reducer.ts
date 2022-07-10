@@ -1,6 +1,7 @@
 import { Map } from "immutable";
 
 import * as actionTypes from "./constants";
+import { actionType } from "@/types";
 
 const initialState = Map({
   topBanners: [], // 轮播图
@@ -13,7 +14,7 @@ const initialState = Map({
   settleSings: [] // 热门歌手
 });
 
-function reducer(state = initialState, action: any) {
+function reducer(state = initialState, action: actionType) {
   switch (action.type) {
     case actionTypes.CHANGE_TOP_BANNERS:
       return state.set("topBanners", action.topBanners);

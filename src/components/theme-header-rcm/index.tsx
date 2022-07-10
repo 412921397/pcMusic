@@ -3,13 +3,13 @@ import { NavLink } from "react-router-dom";
 
 import { HeaderWrapper } from "./style";
 
-interface themeProps {
+interface QLThemeProps {
   title: string;
   keywords?: string[];
   link?: string;
 }
 
-const QLThemeHeaderRCM = memo((props: themeProps) => {
+const QLThemeHeaderRCM = memo((props: QLThemeProps) => {
   const { title, keywords, link = "" } = props;
 
   return (

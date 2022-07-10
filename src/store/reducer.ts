@@ -7,6 +7,7 @@ import { reducer as djradioReducer } from "@/pages/discover/c-pages/djradio/stor
 import { reducer as artistReducer } from "@/pages/discover/c-pages/artist/store";
 import { reducer as albumReducer } from "@/pages/discover/c-pages/album/store";
 import { reducer as playerReducer } from "@/pages/player/store";
+import { reducer as coverReducer } from "@/pages/songs-detail/store";
 
 const creducer = combineReducers({
   recommend: recommendReducer,
@@ -15,7 +16,8 @@ const creducer = combineReducers({
   djradio: djradioReducer,
   artist: artistReducer,
   album: albumReducer,
-  player: playerReducer
+  player: playerReducer,
+  cover: coverReducer
 });
 
 export default creducer;

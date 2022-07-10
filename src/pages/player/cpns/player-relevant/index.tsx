@@ -28,7 +28,7 @@ export default memo(function QLPlayerRelevant() {
     <RelevantWrapper>
       <QLThemeHeaderPlayer title="相似歌单" />
       <div className="songs">
-        {simiPlaylist.map((item: any) => {
+        {simiPlaylist?.map((item: any) => {
           return (
             <div className="song-item" key={item.id}>
               <a className="image" href="/#">

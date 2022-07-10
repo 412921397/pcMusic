@@ -1,9 +1,10 @@
 import { Map } from "immutable";
 
 import * as actionTypes from "./constants";
+import { actionType } from "@/types";
 
 const defaultState = Map({
-  playList: [] /** 播放列表 */,
+  playLists: [] /** 播放列表 */,
   currentSong: {} /** 当前播放歌曲详情 */,
   currentSongIndex: 0 /** 当前歌曲播放的索引值 */,
   sequence: 0 /** 歌曲的默认播放模式： 0 循环 1 随机 2 单曲 */,
@@ -13,12 +14,12 @@ const defaultState = Map({
   simiPlaylist: [] /** 相似歌单 */
 });
 
-function reducer(state = defaultState, action: any) {
+function reducer(state = defaultState, action: actionType) {
   switch (action.type) {
     case actionTypes.CHANGE_CURRENT_SONG:
       return state.set("currentSong", action.currentSong);
     case actionTypes.CHANGE_PLAY_LIST:
-      return state.set("playList", action.playList);
+      return state.set("playList", action.playLists);
     case actionTypes.CHANGE_CURRENT_SONG_INDEX:
       return state.set("currentSongIndex", action.index);
     case actionTypes.CHANGE_SEQUENCE:

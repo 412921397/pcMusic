@@ -59,25 +59,25 @@ export const changeSequenceAction = (sequence: number) => ({
 /** 当前播放歌曲的和索引值 */
 export const changeCurrentIndexAndSongAction = (tag: number) => {
   return (dispatch: Dispatch, getState: any) => {
-    const playList = getState().getIn(["player", "playList"]);
+    const playLists = getState().getIn(["player", "playLists"]);
     const sequence = getState().getIn(["player", "sequence"]);
     let currentSongIndex = getState().getIn(["player", "currentLyricIndex"]);
 
     switch (sequence) {
       case 1: // 随机播放
-        let randomIndex = getRandomNumber(playList?.length);
+        let randomIndex = getRandomNumber(playLists?.length);
         while (randomIndex === currentSongIndex) {
-          randomIndex = getRandomNumber(playList?.length);
+          randomIndex = getRandomNumber(playLists?.length);
         }
         currentSongIndex = randomIndex;
         break;
       default: // 顺序播放
         currentSongIndex += tag;
-        if (currentSongIndex >= playList?.length) currentSongIndex = 0;
-        if (currentSongIndex < 0) currentSongIndex = playList?.length - 1;
+        if (currentSongIndex >= playLists?.length) currentSongIndex = 0;
+        if (currentSongIndex < 0) currentSongIndex = playLists?.length - 1;
     }
 
-    const currentSong = playList[currentSongIndex];
+    const currentSong = playLists[currentSongIndex];
     dispatch(changeCurrentSongAction(currentSong));
     dispatch(changeCurrentSongIndexAction(currentSongIndex));
 
@@ -90,15 +90,15 @@ export const changeCurrentIndexAndSongAction = (tag: number) => {
 export const getSongDetailAction = (id: number) => {
   return (dispatch: Dispatch, getState: any) => {
     /** 1.根据id查找playList中是否已经有了该歌曲 */
-    const playList = getState().getIn(["player", "playList"]);
-    const songIndex: number = playList.findIndex((song: any) => song?.id === id);
+    const playLists = getState().getIn(["player", "playLists"]);
+    const songIndex: number = playLists.findIndex((song: any) => song?.id === id);
 
     /** 2.判断是否找到歌曲 */
     let song = null;
     if (songIndex !== -1) {
       // 找到该歌曲
       dispatch(changeCurrentSongIndexAction(songIndex));
-      song = playList[songIndex];
+      song = playLists[songIndex];
       /** 当前歌曲 */
       dispatch(changeCurrentSongAction(song));
       /** 请求歌词 */
@@ -111,7 +111,7 @@ export const getSongDetailAction = (id: number) => {
         if (!song) return;
 
         /** 1.将最新请求到的歌曲添加到播放列表中 */
-        const newPlayList = [...playList];
+        const newPlayList = [...playLists];
         newPlayList.push(song);
 
         /**2.更新redux中的值 */

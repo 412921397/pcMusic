@@ -142,6 +142,16 @@ button {
   background: url(../img/sprite_cover.png) no-repeat -145px -57px;
 }
 
+.songs-cover {
+  width: 208px;
+  height: 208px;
+  background-position: 0 -1285px;
+  top: -4px;
+  left: -4px;
+  text-indent: -9999px;
+  background: url(../img/sprite_cover.png) no-repeat -145px -57px;
+}
+
 .sprite_player {
   background: url(../img/playbar_sprite.png) no-repeat 0 9999px;
 }

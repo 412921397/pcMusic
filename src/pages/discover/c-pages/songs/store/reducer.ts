@@ -1,6 +1,7 @@
 import { Map } from "immutable";
 
 import * as actionTypes from "./constants";
+import { actionType } from "@/types";
 
 const defaultState = Map({
   category: [], //全部歌单
@@ -8,7 +9,7 @@ const defaultState = Map({
   categorySongs: {}
 });
 
-const reducer = (state = defaultState, action: any) => {
+const reducer = (state = defaultState, action: actionType) => {
   switch (action.type) {
     case actionTypes.CHANGE_SONGS_CATEGORY:
       return state.set("category", action.category);

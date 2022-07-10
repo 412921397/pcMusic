@@ -12,6 +12,7 @@ const QLSongs = lazy(() => import("@/pages/discover/c-pages/songs"));
 const QlFriends = lazy(() => import("@/pages/friends"));
 const QLMine = lazy(() => import("@/pages/mine"));
 const QLPlayer = lazy(() => import("@/pages/player"));
+const QLSongsDetail = lazy(() => import("@/pages/songs-detail"));
 
 const routes: RouteObject[] = [
   {
@@ -57,6 +58,10 @@ const routes: RouteObject[] = [
       {
         path: "/discover/player",
         element: <QLPlayer />
+      },
+      {
+        path: "/discover/songsDetail",
+        element: <QLSongsDetail />
       }
     ]
   },

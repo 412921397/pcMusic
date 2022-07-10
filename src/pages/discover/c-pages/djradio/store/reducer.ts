@@ -1,6 +1,7 @@
 import { Map } from "immutable";
 
 import * as actionTypes from "./constants";
+import { actionType } from "@/types";
 
 const defaultState = Map({
   categories: [],
@@ -9,7 +10,7 @@ const defaultState = Map({
   radios: []
 });
 
-const reducer = (state = defaultState, action: any) => {
+const reducer = (state = defaultState, action: actionType) => {
   switch (action.type) {
     case actionTypes.CHANGE_RADIO_CATEGORY:
       return state.set("categories", action.categories);

@@ -10,12 +10,14 @@ specifiers:
   "@types/node": ^17.0.45
   "@types/react": ^18.0.0
   "@types/react-dom": ^18.0.0
+  "@types/react-redux": ^7.1.24
   "@types/redux-immutable": ^4.0.3
   "@typescript-eslint/eslint-plugin": ^5.27.0
   "@typescript-eslint/parser": ^5.27.0
   antd: ^4.20.6
   axios: ^0.27.2
   classnames: ^2.3.1
+  dayjs: ^1.11.3
   eslint: ^8.16.0
   eslint-config-airbnb: ^19.0.4
   eslint-config-prettier: ^8.5.0
@@ -53,11 +55,13 @@ dependencies:
   "@types/node": registry.npmmirror.com/@types/node/17.0.45
   "@types/react": registry.npmmirror.com/@types/react/18.0.14
   "@types/react-dom": registry.npmmirror.com/@types/react-dom/18.0.5
+  "@types/react-redux": registry.npmmirror.com/@types/react-redux/7.1.24
   "@typescript-eslint/eslint-plugin": registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.30.0_5mtqsiui4sk53pmkx7i7ue45wm
   "@typescript-eslint/parser": registry.npmmirror.com/@typescript-eslint/parser/5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
   antd: registry.npmmirror.com/antd/4.21.4_biqbaboplfbrettd7655fr4n2y
   axios: registry.npmmirror.com/axios/0.27.2
   classnames: registry.npmmirror.com/classnames/2.3.1
+  dayjs: registry.npmmirror.com/dayjs/1.11.3
   eslint: registry.npmmirror.com/eslint/8.18.0
   eslint-config-airbnb: registry.npmmirror.com/eslint-config-airbnb/19.0.4_iimueyz26jqv64xowcafd2lrji
   eslint-config-prettier: registry.npmmirror.com/eslint-config-prettier/8.5.0_eslint@8.18.0
@@ -4431,6 +4435,22 @@ packages:
     version: 18.0.5
     dependencies:
       "@types/react": registry.npmmirror.com/@types/react/18.0.14
+    dev: false
+
+  registry.npmmirror.com/@types/react-redux/7.1.24:
+    resolution:
+      {
+        integrity: sha512-7FkurKcS1k0FHZEtdbbgN8Oc6b+stGSfZYjQGicofJ0j4U0qIn/jaSvnP2pLwZKiai3/17xqqxkkrxTgN8UNbQ==,
+        registry: http://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@types/react-redux/-/react-redux-7.1.24.tgz
+      }
+    name: "@types/react-redux"
+    version: 7.1.24
+    dependencies:
+      "@types/hoist-non-react-statics": registry.npmmirror.com/@types/hoist-non-react-statics/3.3.1
+      "@types/react": registry.npmmirror.com/@types/react/18.0.14
+      hoist-non-react-statics: registry.npmmirror.com/hoist-non-react-statics/3.3.2
+      redux: registry.npmmirror.com/redux/4.2.0
     dev: false
 
   registry.npmmirror.com/@types/react/18.0.14:

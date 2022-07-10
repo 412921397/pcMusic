@@ -34,7 +34,7 @@ export default memo(function QLSongsList() {
     <SongListWrapper>
       <div className="songs-list">
         {songList.map((item: any) => {
-          return <QLThemeCover key={item.id} info={item} right="30px" />;
+          return <QLThemeCover key={item?.id} info={item} right="30px" />;
         })}
       </div>
       <QLPagination

@@ -1,6 +1,7 @@
 import { Map } from "immutable";
 
 import * as actionTypes from "./constants";
+import { actionType } from "@/types";
 
 const defaultState = Map({
   topList: [], // 全部榜单
@@ -9,7 +10,7 @@ const defaultState = Map({
   updateFrequency: "" /** 更新了多少首 */
 });
 
-const reducer = (state = defaultState, action: any) => {
+const reducer = (state = defaultState, action: actionType) => {
   switch (action.type) {
     case actionTypes.CHNAGE_TOP_LIST:
       return state.set("topList", action.topList);

@@ -26,16 +26,16 @@ export default memo(function QLPlayerBar() {
   /** 显示歌词面板 */
   const [showPanel, setShowPanel] = useState(false);
 
-  const audioRef: any = useRef();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   // redux hook
   /** 获取播放的歌曲信息 */
-  const { currentSong, sequence, lyricList, currentLyricIndex, playList } = useSelector(
+  const { currentSong, sequence, lyricList, currentLyricIndex, playLists } = useSelector(
     (state: any) => ({
       currentSong: state.getIn(["player", "currentSong"]),
       sequence: state.getIn(["player", "sequence"]),
       lyricList: state.getIn(["player", "lyricList"]),
       currentLyricIndex: state.getIn(["player", "currentLyricIndex"]),
-      playList: state.getIn(["player", "playList"])
+      playLists: state.getIn(["player", "playLists"])
     }),
     shallowEqual
   );
@@ -46,16 +46,17 @@ export default memo(function QLPlayerBar() {
   /** 播放歌曲 */
   useEffect(() => {
     /** 播放歌曲的地址 */
-    audioRef.current.src = getPlaySong(currentSong?.id);
+    if (audioRef.current) audioRef.current.src = getPlaySong(currentSong?.id);
     /** 点击播放并修改状态 */
-    audioRef.current
-      .play()
-      .then(() => {
-        setIsPlaying(true);
-      })
-      .catch(() => {
-        setIsPlaying(false);
-      });
+    if (audioRef.current)
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          setIsPlaying(false);
+        });
   }, [currentSong]);
 
   // 当前组件逻辑
@@ -105,8 +106,8 @@ export default memo(function QLPlayerBar() {
   const handleMusicEnded = () => {
     if (sequence === 2) {
       // 单曲循环
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
+      if (audioRef.current) audioRef.current.currentTime = 0;
+      if (audioRef.current) audioRef.current.play();
     } else {
       dispatch(changeCurrentIndexAndSongAction(1) as any);
     }
@@ -126,7 +127,9 @@ export default memo(function QLPlayerBar() {
 
   /** 播放或暂停歌曲 */
   const playMusic = useCallback(() => {
-    isPlaying ? audioRef.current.pause() : audioRef.current.play();
+    isPlaying
+      ? audioRef.current && audioRef.current.pause()
+      : audioRef.current && audioRef.current.play();
     setIsPlaying(!isPlaying);
   }, [isPlaying]);
 
@@ -145,7 +148,7 @@ export default memo(function QLPlayerBar() {
     (value: number) => {
       /** 再次计算成毫秒 */
       const currentTime = ((value / 100) * duration) / 1000;
-      audioRef.current.currentTime = currentTime;
+      if (audioRef.current) audioRef.current.currentTime = currentTime;
       setCurrentTime(currentTime * 1000);
       setIsChanging(false);
       if (!isPlaying) playMusic();
@@ -195,7 +198,7 @@ export default memo(function QLPlayerBar() {
               .
             </button>
             <button className="sprite_player btn playlist" onClick={() => setShowPanel(!showPanel)}>
-              {playList?.length}
+              {playLists?.length}
             </button>
           </div>
         </Operator>

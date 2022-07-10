@@ -6,9 +6,9 @@ import { HeaderWrapper, HeaderLeft, HeaderRight } from "./style";
 
 export default memo(function PlayHeader() {
   /** 获取歌曲列表数据 */
-  const { playList, currentSong } = useSelector(
+  const { playLists, currentSong } = useSelector(
     (state: any) => ({
-      playList: state.getIn(["player", "playList"]),
+      playLists: state.getIn(["player", "playLists"]),
       currentSong: state.getIn(["player", "currentSong"])
     }),
     shallowEqual
@@ -24,7 +24,7 @@ export default memo(function PlayHeader() {
   return (
     <HeaderWrapper>
       <HeaderLeft>
-        <h3>播放列表({playList?.length})</h3>
+        <h3>播放列表({playLists?.length})</h3>
         <div className="operator">
           <button>
             <i className="sprite_playlist icon favor" />

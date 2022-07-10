@@ -8,9 +8,9 @@ import { PlayListWrapper } from "./style";
 
 export default memo(function playList() {
   /** redux数据 */
-  const { playList, currentSongIndex } = useSelector(
+  const { playLists, currentSongIndex } = useSelector(
     (state: any) => ({
-      playList: state.getIn(["player", "playList"]),
+      playLists: state.getIn(["player", "playLists"]),
       currentSongIndex: state.getIn(["player", "currentSongIndex"])
     }),
     shallowEqual
@@ -18,7 +18,7 @@ export default memo(function playList() {
 
   return (
     <PlayListWrapper>
-      {playList.map((item: any, index: number) => {
+      {playLists.map((item: any, index: number) => {
         return (
           <div
             key={item?.id}
