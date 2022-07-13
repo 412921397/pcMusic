@@ -1,7 +1,7 @@
 import { Map } from "immutable";
 
 import * as actionTypes from "./constants";
-import { actionType } from "@/types";
+import { actionType } from "@/typings";
 
 const defaultState = Map({
   hotAlbums: [],
