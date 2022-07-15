@@ -1,5 +1,9 @@
 import { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getSizeImage } from "@/utils/format-utils";
 
@@ -11,12 +15,12 @@ export default memo(function QLSettleSinger() {
   const dispatch = useDispatch();
   /** 请求歌手数据 */
   useEffect(() => {
-    dispatch(getArtistListAction() as any);
+    dispatch(getArtistListAction());
   }, [dispatch]);
 
   const { settleSings } = useSelector(
-    (state: any) => ({
-      settleSings: state.getIn(["recommend", "settleSings"])
+    (state) => ({
+      settleSings: state.recommend.settleSings
     }),
     shallowEqual
   );
@@ -25,7 +29,7 @@ export default memo(function QLSettleSinger() {
     <SetterSongerWrapper>
       <QLThemeHeaderSmall title="入驻歌手" more="查看更多>" link="/discover/artist" />
       <div className="singer-list">
-        {settleSings.slice(0, 5).map((item: any) => {
+        {settleSings.slice(0, 5).map((item) => {
           return (
             <div key={item.id}>
               <a href="/#" key={item.id} className="item">

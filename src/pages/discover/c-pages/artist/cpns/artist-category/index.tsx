@@ -1,8 +1,12 @@
 import { memo } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import classNames from "classnames";
-import { changeCurrentArea, changeCurrentType } from "../../store/actionCreators";
+import { changeCurrentArea, changeCurrentType } from "../../store/artistSlice";
 
 import { artistCategories } from "@/common/local-data";
 import { CategoryWrapper, CategoryItem } from "./style";
@@ -12,9 +16,9 @@ export default memo(function QLArtistCategory() {
   const dispatch = useDispatch();
   /** 获取redux数据 */
   const { currentArea, currentType } = useSelector(
-    (state: any) => ({
-      currentArea: state.getIn(["artist", "currentArea"]),
-      currentType: state.getIn(["artist", "currentType"])
+    (state) => ({
+      currentArea: state.artist.currentArea,
+      currentType: state.artist.currentType
     }),
     shallowEqual
   );
@@ -44,7 +48,7 @@ export default memo(function QLArtistCategory() {
 
   return (
     <CategoryWrapper>
-      {artistCategories.map((item: any) => {
+      {artistCategories.map((item) => {
         return (
           <div className="section" key={item?.area}>
             <h2 className="title">{item?.title}</h2>

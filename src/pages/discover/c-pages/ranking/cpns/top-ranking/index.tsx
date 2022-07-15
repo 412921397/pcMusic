@@ -1,11 +1,12 @@
 import { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-
 import {
-  getRankingListAction,
-  changeCurrentIndex,
-  changeUpdateFrequency
-} from "../../store/actionCreators";
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
+
+import { getRankingListAction } from "../../store/actionCreators";
+import { changeCurrentIndex, changeUpdateFrequency } from "../../store/rankingSlice";
 
 import classNames from "classnames";
 import { TopRankingWrapper } from "./style";
@@ -15,9 +16,9 @@ import { getSizeImage } from "@/utils/format-utils";
 export default memo(function TopRanking() {
   /** redux数据 */
   const { topList, currentIndex } = useSelector(
-    (state: any) => ({
-      topList: state.getIn(["ranking", "topList"]),
-      currentIndex: state.getIn(["ranking", "currentIndex"])
+    (state) => ({
+      topList: state.ranking.topList,
+      currentIndex: state.ranking.currentIndex
     }),
     shallowEqual
   );
@@ -31,7 +32,7 @@ export default memo(function TopRanking() {
     const updateFrequency = topList[currentIndx] && topList[currentIndx]?.updateFrequency;
 
     if (!id || !updateFrequency) return;
-    dispatch(getRankingListAction(id) as any);
+    dispatch(getRankingListAction(id));
     dispatch(changeUpdateFrequency(updateFrequency));
   }, [topList, currentIndex, dispatch, currentIndx]);
 
@@ -39,12 +40,12 @@ export default memo(function TopRanking() {
   const hanldeItemClick = (index: number) => {
     dispatch(changeCurrentIndex(index));
     const id = topList[currentIndx].id;
-    dispatch(getRankingListAction(id) as any);
+    dispatch(getRankingListAction(id));
   };
 
   return (
     <TopRankingWrapper>
-      {topList.map((item: any, index: number) => {
+      {topList.map((item, index) => {
         let header;
         if (index === 0 || index === 4) {
           header = <div className="header">{index === 0 ? "云音乐特色榜" : "全球媒体榜"}</div>;

@@ -1,12 +1,13 @@
 import { memo, useState, useRef, useCallback, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-
 import {
-  changeSequenceAction,
-  changeCurrentIndexAndSongAction,
-  changeCurrentLyricIndexAction
-} from "../store/actionCreators";
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector,
+  shallowEqual
+} from "@/store/hook";
+
+import { changeCurrentIndexAndSongAction } from "../store/actionCreators";
+import { changeSequenceAction, changeCurrentLyricIndexAction } from "../store/playerSlice";
 import { getPlaySong, getSizeImage, formatMinuteSecond } from "@/utils/format-utils";
 
 import { Slider, message } from "antd";
@@ -30,12 +31,12 @@ export default memo(function QLPlayerBar() {
   // redux hook
   /** 获取播放的歌曲信息 */
   const { currentSong, sequence, lyricList, currentLyricIndex, playLists } = useSelector(
-    (state: any) => ({
-      currentSong: state.getIn(["player", "currentSong"]),
-      sequence: state.getIn(["player", "sequence"]),
-      lyricList: state.getIn(["player", "lyricList"]),
-      currentLyricIndex: state.getIn(["player", "currentLyricIndex"]),
-      playLists: state.getIn(["player", "playLists"])
+    (state) => ({
+      currentSong: state.player.currentSong,
+      sequence: state.player.sequence,
+      lyricList: state.player.lyricList,
+      currentLyricIndex: state.player.currentLyricIndex,
+      playLists: state.player.playLists
     }),
     shallowEqual
   );
@@ -46,7 +47,7 @@ export default memo(function QLPlayerBar() {
   /** 播放歌曲 */
   useEffect(() => {
     /** 播放歌曲的地址 */
-    if (audioRef.current) audioRef.current.src = getPlaySong(currentSong?.id);
+    if (audioRef.current) audioRef.current.src = getPlaySong(+currentSong?.id);
     /** 点击播放并修改状态 */
     if (audioRef.current)
       audioRef.current
@@ -109,13 +110,13 @@ export default memo(function QLPlayerBar() {
       if (audioRef.current) audioRef.current.currentTime = 0;
       if (audioRef.current) audioRef.current.play();
     } else {
-      dispatch(changeCurrentIndexAndSongAction(1) as any);
+      dispatch(changeCurrentIndexAndSongAction(1));
     }
   };
 
   /** 上一曲或下一曲 */
   const changeMusic = (num: number) => {
-    dispatch(changeCurrentIndexAndSongAction(num) as any);
+    dispatch(changeCurrentIndexAndSongAction(num));
   };
 
   /** 播放模式 */

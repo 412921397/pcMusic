@@ -1,5 +1,5 @@
 import { memo, useEffect, useRef } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { useAppSelector as useSelector, shallowEqual } from "@/store/hook";
 import classNames from "classnames";
 
 import { scrollTo } from "@/utils/ui-helper";
@@ -11,9 +11,9 @@ export default memo(function QLLyricPanel() {
 
   /** 获取歌词 */
   const { lyricList, currentLyricIndex } = useSelector(
-    (state: any) => ({
-      lyricList: state.getIn(["player", "lyricList"]),
-      currentLyricIndex: state.getIn(["player", "currentLyricIndex"])
+    (state) => ({
+      lyricList: state.player.lyricList,
+      currentLyricIndex: state.player.currentLyricIndex
     }),
     shallowEqual
   );
@@ -26,7 +26,7 @@ export default memo(function QLLyricPanel() {
   return (
     <PannelWrapper ref={panelRef}>
       <div className="lrc-content">
-        {lyricList.map((item: any, index: number) => {
+        {lyricList.map((item, index) => {
           return (
             <div
               key={item?.time}

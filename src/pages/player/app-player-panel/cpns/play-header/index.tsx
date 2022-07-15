@@ -1,15 +1,19 @@
 import { memo, useCallback } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector,
+  shallowEqual
+} from "@/store/hook";
 
-import { changeCurrentSongAction } from "../../../store/actionCreators";
+import { changeCurrentSongAction } from "../../../store/playerSlice";
 import { HeaderWrapper, HeaderLeft, HeaderRight } from "./style";
 
 export default memo(function PlayHeader() {
   /** 获取歌曲列表数据 */
   const { playLists, currentSong } = useSelector(
-    (state: any) => ({
-      playLists: state.getIn(["player", "playLists"]),
-      currentSong: state.getIn(["player", "currentSong"])
+    (state) => ({
+      playLists: state.player.playLists,
+      currentSong: state.player.currentSong
     }),
     shallowEqual
   );

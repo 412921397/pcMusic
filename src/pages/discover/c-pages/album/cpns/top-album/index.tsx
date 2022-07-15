@@ -1,5 +1,9 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getTopAlbumsAction } from "../../store/actionCreators";
 
@@ -21,9 +25,9 @@ export default memo(function QLTopAlbum() {
 
   /** 获取数据 */
   const { topAlbums, total } = useSelector(
-    (state: any) => ({
-      topAlbums: state.getIn(["album", "topAlbums"]),
-      total: state.getIn(["album", "total"])
+    (state) => ({
+      topAlbums: state.album.topAlbums,
+      total: state.album.total
     }),
     shallowEqual
   );
@@ -32,7 +36,7 @@ export default memo(function QLTopAlbum() {
   const onPageChange = useCallback(
     (page: number) => {
       setCurrentPage(page);
-      dispatch(getTopAlbumsAction(page) as any);
+      dispatch(getTopAlbumsAction(page));
     },
     [dispatch]
   );
@@ -41,9 +45,9 @@ export default memo(function QLTopAlbum() {
     <TopAlbumWrapper>
       <QLThemeHeaderNormal title="全部新碟" />
       <div className="album-list">
-        {topAlbums?.map((item: any) => {
+        {topAlbums.map((item) => {
           return (
-            <QLAlbumCover key={item.id} info={item} size={130} width={"153px"} bgp={"-845px"} />
+            <QLAlbumCover key={item?.id} info={item} size={130} width={"153px"} bgp={"-845px"} />
           );
         })}
       </div>

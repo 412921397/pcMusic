@@ -1,5 +1,9 @@
 import { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getHotAlbumsAction } from "../../store/actionCreators";
 
@@ -12,24 +16,24 @@ export default memo(function QLHotAlbum() {
   const dispatch = useDispatch();
 
   const { hotAlbums } = useSelector(
-    (state: any) => ({
-      hotAlbums: state.getIn(["album", "hotAlbums"])
+    (state) => ({
+      hotAlbums: state.album.hotAlbums
     }),
     shallowEqual
   );
 
   /** 请求新碟上架 */
   useEffect(() => {
-    dispatch(getHotAlbumsAction() as any);
+    dispatch(getHotAlbumsAction());
   }, [dispatch]);
 
   return (
     <HotAlbumWrapper>
       <QLThemeHeaderNormal title="热门新碟" />
       <div className="album-list">
-        {hotAlbums.map((item: any) => {
+        {hotAlbums.map((item) => {
           return (
-            <QLAlbumCover key={item.id} info={item} size={130} width={"153px"} bgp={"-845px"} />
+            <QLAlbumCover key={item?.id} info={item} size={130} width={"153px"} bgp={"-845px"} />
           );
         })}
       </div>

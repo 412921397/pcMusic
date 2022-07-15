@@ -1,6 +1,10 @@
 import { memo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getSubscribersAction } from "../../store/actionCreators";
 import { getSizeImage } from "@/utils/format-utils";
@@ -19,13 +23,13 @@ export default memo(function QLSongsDetailSongs() {
   const dispatch = useDispatch();
   // 获取喜欢这个歌单的人
   useEffect(() => {
-    dispatch(getSubscribersAction((state as QLState).id) as any);
+    dispatch(getSubscribersAction((state as QLState).id));
   }, [(state as QLState).id]);
 
   // 订阅歌单的用户
   const { subscribers } = useSelector(
-    (state: any) => ({
-      subscribers: state.getIn(["cover", "subscribers"])
+    (state) => ({
+      subscribers: state.songsCover.subscribers
     }),
     shallowEqual
   );

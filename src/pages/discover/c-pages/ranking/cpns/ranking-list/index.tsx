@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useAppSelector as useSelector } from "@/store/hook";
 
 import usePlayMusic from "@/hooks/usePlayMusic";
 import { getSizeImage, formatMinuteSecond } from "@/utils/format-utils";
@@ -12,8 +12,8 @@ export default memo(function QLTankingList() {
   const [playMusic] = usePlayMusic();
 
   const { playList } = useSelector(
-    (state: any) => ({
-      playList: state.getIn(["ranking", "playList"])
+    (state) => ({
+      playList: state.ranking.playList
     }),
     shallowEqual
   );
@@ -34,7 +34,7 @@ export default memo(function QLTankingList() {
             </tr>
           </thead>
           <tbody>
-            {tracks.map((item: any, index: number) => {
+            {tracks?.map((item: any, index: number) => {
               return (
                 <tr key={item?.id}>
                   <td>

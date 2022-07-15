@@ -1,5 +1,5 @@
 import { memo, useState } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useAppSelector as useSelector } from "@/store/hook";
 
 import { InfoWrapper, InfoLeft, InfoRight } from "./style";
 import QLSongOperationBar from "@/components/song-operation-bar";
@@ -12,9 +12,9 @@ export default memo(function QLPlayerInfo() {
 
   // redux数据
   const { currentSong, lyricList } = useSelector(
-    (state: any) => ({
-      currentSong: state.getIn(["player", "currentSong"]),
-      lyricList: state.getIn(["player", "lyricList"])
+    (state) => ({
+      currentSong: state.player.currentSong,
+      lyricList: state.player.lyricList
     }),
     shallowEqual
   );
@@ -61,7 +61,7 @@ export default memo(function QLPlayerInfo() {
         />
         <div className="lyric">
           <div className="lyric-info">
-            {lyricList.slice(0, totalLyricCount).map((item: any) => {
+            {lyricList.slice(0, totalLyricCount).map((item) => {
               return (
                 <p key={item.time} className="text">
                   {item.content}

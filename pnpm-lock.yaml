@@ -29,7 +29,6 @@ specifiers:
   eslint-plugin-react-hooks: 4.3.0
   http-proxy-middleware: ^2.0.6
   husky: ^8.0.1
-  immutable: ^4.1.0
   lint-staged: ^13.0.0
   normalize.css: ^8.0.1
   prettier: ^2.6.2
@@ -39,8 +38,6 @@ specifiers:
   react-router-dom: ^6.3.0
   react-scripts: 5.0.1
   redux: ^4.2.0
-  redux-immutable: ^4.0.0
-  redux-thunk: ^2.4.1
   styled-components: ^5.3.5
   tslib: ^2.4.0
   typescript: ^4.4.2
@@ -74,7 +71,6 @@ dependencies:
   eslint-plugin-react-hooks: registry.npmmirror.com/eslint-plugin-react-hooks/4.3.0_eslint@8.18.0
   http-proxy-middleware: registry.npmmirror.com/http-proxy-middleware/2.0.6
   husky: registry.npmmirror.com/husky/8.0.1
-  immutable: registry.npmmirror.com/immutable/4.1.0
   lint-staged: registry.npmmirror.com/lint-staged/13.0.3
   normalize.css: registry.npmmirror.com/normalize.css/8.0.1
   prettier: registry.npmmirror.com/prettier/2.7.1
@@ -84,8 +80,6 @@ dependencies:
   react-router-dom: registry.npmmirror.com/react-router-dom/6.3.0_biqbaboplfbrettd7655fr4n2y
   react-scripts: registry.npmmirror.com/react-scripts/5.0.1_qtbnez4q7bzoc4eqybg3efzzxe
   redux: registry.npmmirror.com/redux/4.2.0
-  redux-immutable: registry.npmmirror.com/redux-immutable/4.0.0_immutable@4.1.0
-  redux-thunk: registry.npmmirror.com/redux-thunk/2.4.1_redux@4.2.0
   styled-components: registry.npmmirror.com/styled-components/5.3.5_biqbaboplfbrettd7655fr4n2y
   tslib: registry.npmmirror.com/tslib/2.4.0
   typescript: registry.npmmirror.com/typescript/4.7.4
@@ -10931,6 +10925,7 @@ packages:
       }
     name: immutable
     version: 4.1.0
+    dev: true
 
   registry.npmmirror.com/import-fresh/3.3.0:
     resolution:
@@ -17253,22 +17248,6 @@ packages:
     dependencies:
       indent-string: registry.npmmirror.com/indent-string/4.0.0
       strip-indent: registry.npmmirror.com/strip-indent/3.0.0
-    dev: false
-
-  registry.npmmirror.com/redux-immutable/4.0.0_immutable@4.1.0:
-    resolution:
-      {
-        integrity: sha512-SchSn/DWfGb3oAejd+1hhHx01xUoxY+V7TeK0BKqpkLKiQPVFf7DYzEaKmrEVxsWxielKfSK9/Xq66YyxgR1cg==,
-        registry: http://registry.npm.taobao.org/,
-        tarball: https://registry.npmmirror.com/redux-immutable/-/redux-immutable-4.0.0.tgz
-      }
-    id: registry.npmmirror.com/redux-immutable/4.0.0
-    name: redux-immutable
-    version: 4.0.0
-    peerDependencies:
-      immutable: ^3.8.1 || ^4.0.0-rc.1
-    dependencies:
-      immutable: registry.npmmirror.com/immutable/4.1.0
     dev: false
 
   registry.npmmirror.com/redux-thunk/2.4.1_redux@4.2.0:

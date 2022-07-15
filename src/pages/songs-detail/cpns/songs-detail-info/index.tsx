@@ -1,6 +1,10 @@
 import { memo, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import dayjs from "dayjs";
 import { coverPlayListAction } from "../../store/actionCreators";
@@ -21,13 +25,13 @@ export default memo(function QLSongsDInfo() {
 
   // 请求歌单详情
   useEffect(() => {
-    dispatch(coverPlayListAction((state as QLState).id) as any);
+    dispatch(coverPlayListAction((state as QLState).id));
   }, [(state as QLState).id]);
 
   // 获取歌单详情的数据
   const { coverPlayList } = useSelector(
-    (state: any) => ({
-      coverPlayList: state.getIn(["cover", "coverPlayList"])
+    (state) => ({
+      coverPlayList: state.songsCover.coverPlayList
     }),
     shallowEqual
   );

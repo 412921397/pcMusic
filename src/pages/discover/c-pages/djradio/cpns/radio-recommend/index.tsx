@@ -1,5 +1,9 @@
 import { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getDjRadioRecommendAction } from "../../store/actionCreators";
 import { RecommendWrapper } from "./style";
@@ -10,14 +14,14 @@ export default memo(function QLRadioRecommend() {
   const dispatch = useDispatch();
   /** 请求当前优秀电台数据 */
   useEffect(() => {
-    dispatch(getDjRadioRecommendAction(currentId) as any);
+    dispatch(getDjRadioRecommendAction(currentId));
   }, [dispatch]);
 
   /** redux数据 */
   const { currentId, recommends } = useSelector(
-    (state: any) => ({
-      currentId: state.getIn(["djradio", "currentId"]),
-      recommends: state.getIn(["djradio", "recommends"])
+    (state) => ({
+      currentId: state.djradio.currentId,
+      recommends: state.djradio.recommends
     }),
     shallowEqual
   );
@@ -26,7 +30,7 @@ export default memo(function QLRadioRecommend() {
     <RecommendWrapper>
       <QLThemeHeaderNormal title="优秀新电台" />
       <div className="radio-list">
-        {recommends.slice(0, 5).map((item: any) => {
+        {recommends?.slice(0, 5)?.map((item) => {
           return <QLRadioRecommendCover info={item} />;
         })}
       </div>

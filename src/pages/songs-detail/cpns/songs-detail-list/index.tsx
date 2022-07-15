@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useAppSelector as useSelector } from "@/store/hook";
 
 import { formatMinuteSecond } from "@/utils/format-utils";
 
@@ -8,8 +8,8 @@ import QLThemeHEaderSong from "@/components/theme-header-song";
 
 export default memo(function QLSongsDetailList() {
   const { coverPlayList } = useSelector(
-    (state: any) => ({
-      coverPlayList: state.getIn(["cover", "coverPlayList"])
+    (state) => ({
+      coverPlayList: state.songsCover.coverPlayList
     }),
     shallowEqual
   );

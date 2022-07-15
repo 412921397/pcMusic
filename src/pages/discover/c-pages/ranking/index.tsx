@@ -1,5 +1,5 @@
 import { memo, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch as useDispatch } from "@/store/hook";
 
 import { getTopListAction } from "./store/actionCreators";
 
@@ -14,7 +14,7 @@ export default memo(function QLRanking() {
 
   /** 请求全部榜单 */
   useEffect(() => {
-    dispatch(getTopListAction() as any);
+    dispatch(getTopListAction());
   }, [dispatch]);
 
   return (

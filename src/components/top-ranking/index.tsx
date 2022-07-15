@@ -6,7 +6,7 @@ import { getSizeImage } from "@/utils/format-utils";
 import { TopRankingWrapper } from "./style";
 
 interface QLTopRankingProps {
-  info?: any;
+  info?: { [key: string]: any };
 }
 
 export default memo(function QLTopRanking(props: QLTopRankingProps) {

@@ -6,7 +6,7 @@ import { getSizeImage, getCount } from "@/utils/format-utils";
 import { ThemeCoverWrapper } from "./style";
 
 interface QLThemeCoverProps {
-  info: any;
+  info: { [key: string]: any };
   right: string;
 }
 

@@ -1,12 +1,12 @@
 import { memo } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useAppSelector as useSelector } from "@/store/hook";
 
 import classNames from "classnames";
 
 import { CategoryWrapper } from "./style";
 
 interface QLSongsCategoryProps {
-  selectCategory: any;
+  selectCategory: (key: string) => void;
   activeCount: string;
 }
 
@@ -15,8 +15,8 @@ export default memo(function QLSongsCategory(props: QLSongsCategoryProps) {
 
   /** 获取分类 */
   const { category } = useSelector(
-    (state: any) => ({
-      category: state.getIn(["songs", "category"])
+    (state) => ({
+      category: state.songs.category
     }),
     shallowEqual
   );
@@ -30,7 +30,7 @@ export default memo(function QLSongsCategory(props: QLSongsCategoryProps) {
         </a>
       </div>
       <div className="category">
-        {category.map((item: any, index: number) => {
+        {category?.map((item, index) => {
           return (
             <dl key={item?.name} className={"item" + index}>
               <dt>

@@ -1,6 +1,10 @@
 import { memo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getSongCategoryListAction } from "../../store/actionCreators";
 
@@ -14,12 +18,12 @@ export default memo(function QLSongsDetailRelevant() {
   const dispatch = useDispatch();
   /** 热门歌单 */
   useEffect(() => {
-    dispatch(getSongCategoryListAction() as any);
+    dispatch(getSongCategoryListAction());
   }, []);
   /** 热门歌单 */
   const { detailPlayList } = useSelector(
-    (state: any) => ({
-      detailPlayList: state.getIn(["cover", "detailPlayList"])
+    (state) => ({
+      detailPlayList: state.songsCover.detailPlayList
     }),
     shallowEqual
   );

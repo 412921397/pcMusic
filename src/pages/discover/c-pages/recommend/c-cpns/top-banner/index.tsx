@@ -1,6 +1,10 @@
 /* eslint-disable no-labels */
 import { memo, useState, useEffect, useRef, useCallback } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getTopBannerAction } from "../../store/actionCreators";
 
@@ -18,8 +22,8 @@ export default memo(function QLTopBanner() {
    *  第二参数shallowEqual是react做的内部浅层比较的hook
    */
   const { topBanners } = useSelector(
-    (state: any) => ({
-      topBanners: state.getIn(["recommend", "topBanners"])
+    (state) => ({
+      topBanners: state.recommend.topBanners
     }),
     shallowEqual
   );
@@ -29,7 +33,7 @@ export default memo(function QLTopBanner() {
   /** 其他hooks */
   const bannerRef: any = useRef(null);
   useEffect(() => {
-    dispatch(getTopBannerAction() as any);
+    dispatch(getTopBannerAction());
   }, [dispatch]);
 
   /** 只有当轮播发生切换的时候才会渲染更新 */

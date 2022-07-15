@@ -1,5 +1,5 @@
 import { memo, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch as useDispatch } from "@/store/hook";
 
 import { SongsWrapper } from "./style";
 import QLSongsHeader from "./cpns/songs-header";
@@ -13,8 +13,8 @@ export default memo(function QLSongs() {
 
   /** 请求歌单分类和对应的歌单 */
   useEffect(() => {
-    dispatch(getSongCategoryAction() as any);
-    dispatch(getSongCategoryListAction(0) as any);
+    dispatch(getSongCategoryAction());
+    dispatch(getSongCategoryListAction(0));
   }, [dispatch]);
 
   return (

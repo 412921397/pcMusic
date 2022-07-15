@@ -1,5 +1,9 @@
 import { memo, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getSongCategoryListAction } from "../../store/actionCreators";
 
@@ -13,8 +17,8 @@ export default memo(function QLSongsList() {
 
   /** 获取歌单 */
   const { categorySongs } = useSelector(
-    (state: any) => ({
-      categorySongs: state.getIn(["songs", "categorySongs"])
+    (state) => ({
+      categorySongs: state.songs.categorySongs
     }),
     shallowEqual
   );
@@ -27,13 +31,13 @@ export default memo(function QLSongsList() {
 
   const onPageChange = (page: number) => {
     setCurrentPage(page);
-    dispatch(getSongCategoryListAction(page) as any);
+    dispatch(getSongCategoryListAction(page));
   };
 
   return (
     <SongListWrapper>
       <div className="songs-list">
-        {songList.map((item: any) => {
+        {songList?.map((item: any) => {
           return <QLThemeCover key={item?.id} info={item} right="30px" />;
         })}
       </div>

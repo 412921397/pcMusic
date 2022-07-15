@@ -1,3 +1,3 @@
-import reducer from "./reducer";
+import reducer from "./recommendSlice";
 
 export { reducer };

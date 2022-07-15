@@ -1,12 +1,13 @@
 import { memo, useCallback, useEffect, useRef } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import classnames from "classnames";
-import {
-  getDjRadioCatelistAction,
-  getDjRadioRecommendAction,
-  changeCurrentIdActio
-} from "../../store/actionCreators";
+import { getDjRadioCatelistAction, getDjRadioRecommendAction } from "../../store/actionCreators";
+import { changeCurrentIdAction } from "../../store/djradioSlice";
 
 import { CategoryWrapper, CategoryContent, CategoryItemImage } from "./style";
 import { Carousel } from "antd";
@@ -17,14 +18,14 @@ export default memo(function QLRadioCategory() {
   const dispatch = useDispatch();
   /** 发送请求 */
   useEffect(() => {
-    dispatch(getDjRadioCatelistAction() as any);
+    dispatch(getDjRadioCatelistAction());
   }, [dispatch]);
 
   /** redux数据 */
   const { categories, currentId } = useSelector(
-    (state: any) => ({
-      categories: state.getIn(["djradio", "categories"]),
-      currentId: state.getIn(["djradio", "currentId"])
+    (state) => ({
+      categories: state.djradio.categories,
+      currentId: state.djradio.currentId
     }),
     shallowEqual
   );
@@ -38,8 +39,8 @@ export default memo(function QLRadioCategory() {
 
   const handleRadioCategory = useCallback(
     (id: number) => {
-      dispatch(changeCurrentIdActio(id));
-      dispatch(getDjRadioRecommendAction(id) as any);
+      dispatch(changeCurrentIdAction(id));
+      dispatch(getDjRadioRecommendAction(id));
     },
     [dispatch]
   );
@@ -50,11 +51,11 @@ export default memo(function QLRadioCategory() {
       <CategoryContent>
         <Carousel ref={carouselRef}>
           {Array(page)
-            .fill(0)
-            .map((_: any, index: number) => {
+            ?.fill(0)
+            ?.map((_, index) => {
               return (
                 <div key={index} className="category-page">
-                  {categories.slice(index * PAGE_SIZE, getSize(index + 1)).map((item: any) => {
+                  {categories?.slice(index * PAGE_SIZE, getSize(index + 1)).map((item) => {
                     return (
                       <div
                         key={item?.id}

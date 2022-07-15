@@ -1,67 +1,24 @@
-import { Dispatch } from "redux";
+import type { AppThunk } from "@/store";
+import {
+  changeCurrentSongAction,
+  changePlayListAction,
+  changLyricListAction,
+  changeCurrentSongIndexAction,
+  changeSimiSongsAction,
+  changeSimiPlaylistAction
+} from "./playerSlice";
 
 import { getSongDetail, getLyric, getSimiSong, getSimiPlaylist } from "@/service/player";
-
-import * as actionTypes from "./constants";
 
 import { getRandomNumber } from "@/utils/math-utils";
 import { parseLyric } from "@/utils/parse-lyric";
 
-/**
- *
- * @param currentSong 当前歌曲
- * @returns
- */
-export const changeCurrentSongAction = (currentSong: any) => ({
-  type: actionTypes.CHANGE_CURRENT_SONG,
-  currentSong
-});
-
-/**
- *
- * @param playList 当前播放歌曲列表
- * @returns
- */
-const changePlayListAction = (playList: any) => ({
-  type: actionTypes.CHANGE_PLAY_LIST,
-  playList
-});
-
-/** 歌词列表 */
-const changLyricListAction = (lyricList: any) => ({
-  type: actionTypes.CHANGE_LYRIC_LIST,
-  lyricList
-});
-
-/**
- *
- * @param index 当前播放歌曲的索引值
- * @returns
- */
-const changeCurrentSongIndexAction = (index: number) => ({
-  type: actionTypes.CHANGE_CURRENT_SONG_INDEX,
-  index
-});
-
-// 对外暴露
-/** 修改歌词对应的索引值 */
-export const changeCurrentLyricIndexAction = (index: number) => ({
-  type: actionTypes.CHANGE_CURRENT_LYRIC_INDEX,
-  index
-});
-
-/** 歌词顺序 */
-export const changeSequenceAction = (sequence: number) => ({
-  type: actionTypes.CHANGE_SEQUENCE,
-  sequence
-});
-
 /** 当前播放歌曲的和索引值 */
-export const changeCurrentIndexAndSongAction = (tag: number) => {
-  return (dispatch: Dispatch, getState: any) => {
-    const playLists = getState().getIn(["player", "playLists"]);
-    const sequence = getState().getIn(["player", "sequence"]);
-    let currentSongIndex = getState().getIn(["player", "currentLyricIndex"]);
+export const changeCurrentIndexAndSongAction = (tag: number): AppThunk => {
+  return (dispatch, getState) => {
+    const playLists = getState().player.playLists;
+    const sequence = getState().player.sequence;
+    let currentSongIndex = getState().player.currentLyricIndex;
 
     switch (sequence) {
       case 1: // 随机播放
@@ -77,7 +34,7 @@ export const changeCurrentIndexAndSongAction = (tag: number) => {
         if (currentSongIndex < 0) currentSongIndex = playLists?.length - 1;
     }
 
-    const currentSong = playLists[currentSongIndex];
+    const currentSong: any = playLists[currentSongIndex];
     dispatch(changeCurrentSongAction(currentSong));
     dispatch(changeCurrentSongIndexAction(currentSongIndex));
 
@@ -87,10 +44,10 @@ export const changeCurrentIndexAndSongAction = (tag: number) => {
 };
 
 /** 获取当前播放歌曲详情 */
-export const getSongDetailAction = (id: number) => {
-  return (dispatch: Dispatch, getState: any) => {
+export const getSongDetailAction = (id: number): AppThunk => {
+  return (dispatch, getState) => {
     /** 1.根据id查找playList中是否已经有了该歌曲 */
-    const playLists = getState().getIn(["player", "playLists"]);
+    const playLists = getState().player.playLists;
     const songIndex: number = playLists.findIndex((song: any) => song?.id === id);
 
     /** 2.判断是否找到歌曲 */
@@ -102,7 +59,7 @@ export const getSongDetailAction = (id: number) => {
       /** 当前歌曲 */
       dispatch(changeCurrentSongAction(song));
       /** 请求歌词 */
-      dispatch(getLyricAction(song?.id) as any);
+      dispatch(getLyricAction((song as any).id) as any);
     } else {
       // 没有找到歌曲
       // 请求歌曲数据
@@ -111,7 +68,7 @@ export const getSongDetailAction = (id: number) => {
         if (!song) return;
 
         /** 1.将最新请求到的歌曲添加到播放列表中 */
-        const newPlayList = [...playLists];
+        const newPlayList: any = [...playLists];
         newPlayList.push(song);
 
         /**2.更新redux中的值 */
@@ -127,8 +84,8 @@ export const getSongDetailAction = (id: number) => {
 };
 
 /** 请求歌词 */
-export const getLyricAction = (id: number) => {
-  return (dispatch: Dispatch) => {
+export const getLyricAction = (id: number): AppThunk => {
+  return (dispatch) => {
     getLyric(id).then((res: any) => {
       const lyric = res?.lrc?.lyric;
       const lyricList = parseLyric(lyric);
@@ -138,29 +95,23 @@ export const getLyricAction = (id: number) => {
 };
 
 /** 相似歌曲 */
-export const getSimiSongAction = () => {
-  return (dispatch: Dispatch, getState: any) => {
-    const id = getState().getIn(["player", "currentSong"]).id;
+export const getSimiSongAction = (): AppThunk => {
+  return (dispatch, getState) => {
+    const id = getState().player.currentSong?.id;
     if (!id) return;
-    getSimiSong(id).then((res: any) => {
-      dispatch({
-        type: actionTypes.CHANGE_SIMI_SONGS,
-        simiSongs: res?.songs
-      });
+    getSimiSong(+id).then((res) => {
+      dispatch(changeSimiSongsAction(res?.songs));
     });
   };
 };
 
 /** 相似歌单 */
-export const getSimiPlaylistAction = () => {
-  return (dispatch: Dispatch, getState: any) => {
-    const id = getState().getIn(["player", "currentSong"]).id;
+export const getSimiPlaylistAction = (): AppThunk => {
+  return (dispatch, getState) => {
+    const id = getState().player.currentSong?.id;
     if (!id) return;
-    getSimiPlaylist(id).then((res: any) => {
-      dispatch({
-        type: actionTypes.CHANGE_SIMI_PLAYLIST,
-        simiPlaylist: res?.playlists
-      });
+    getSimiPlaylist(+id).then((res: any) => {
+      dispatch(changeSimiPlaylistAction(res?.playlists));
     });
   };
 };

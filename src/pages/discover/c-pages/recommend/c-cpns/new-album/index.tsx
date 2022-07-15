@@ -1,5 +1,9 @@
 import { memo, useEffect, useRef } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getNewAlbumsAction } from "../../store/actionCreators";
 
@@ -13,8 +17,8 @@ export default memo(function QLHotalbum() {
 
   /** 获取redux的数据 */
   const { newAlbums } = useSelector(
-    (state: any) => ({
-      newAlbums: state.getIn(["recommend", "newAlbums"])
+    (state) => ({
+      newAlbums: state.recommend.newAlbums
     }),
     shallowEqual
   );
@@ -35,7 +39,7 @@ export default memo(function QLHotalbum() {
             {[0, 1].map((item: number) => {
               return (
                 <div key={item} className="page">
-                  {newAlbums?.slice(item * 5, (item + 1) * 5).map((iten: any) => {
+                  {newAlbums?.slice(item * 5, (item + 1) * 5).map((iten) => {
                     return (
                       <QlAlbumCover key={iten.id} info={iten} size={100} width={118} bgp="-570px" />
                     );

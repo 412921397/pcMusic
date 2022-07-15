@@ -1,5 +1,9 @@
 import { memo, useEffect } from "react";
-import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import {
+  useAppSelector as useSelector,
+  useAppDispatch as useDispatch,
+  shallowEqual
+} from "@/store/hook";
 
 import { getSimiPlaylistAction } from "../../store/actionCreators";
 
@@ -11,8 +15,8 @@ import QLThemeHeaderPlayer from "@/components/theme-header-player";
 export default memo(function QLPlayerRelevant() {
   /** redux数据 */
   const { simiPlaylist } = useSelector(
-    (state: any) => ({
-      simiPlaylist: state.getIn(["player", "simiPlaylist"])
+    (state) => ({
+      simiPlaylist: state.player.simiPlaylist
     }),
     shallowEqual
   );
@@ -21,14 +25,14 @@ export default memo(function QLPlayerRelevant() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSimiPlaylistAction() as any);
+    dispatch(getSimiPlaylistAction());
   }, [dispatch]);
 
   return (
     <RelevantWrapper>
       <QLThemeHeaderPlayer title="相似歌单" />
       <div className="songs">
-        {simiPlaylist?.map((item: any) => {
+        {simiPlaylist?.map((item) => {
           return (
             <div className="song-item" key={item.id}>
               <a className="image" href="/#">

@@ -5,7 +5,7 @@ import { getSizeImage } from "@/utils/format-utils";
 import { CoverWrapper } from "./style";
 
 interface QLRadioRankingCoverProps {
-  info: any;
+  info: { [key: string]: any };
 }
 
 export default memo(function QLRadioRankingCover(props: QLRadioRankingCoverProps) {

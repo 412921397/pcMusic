@@ -1,5 +1,5 @@
 import { memo, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch as useDispatch } from "@/store/hook";
 
 import { OperationBarWrapper } from "./style";
 
@@ -19,7 +19,7 @@ export default memo(function QLSongOperationBar(props: QLSongOperationBarProps) 
   const dispatch = useDispatch();
 
   const playMusic = useCallback(() => {
-    dispatch(getSongDetailAction(currentSongId) as any);
+    dispatch(getSongDetailAction(currentSongId));
   }, [dispatch]);
 
   return (

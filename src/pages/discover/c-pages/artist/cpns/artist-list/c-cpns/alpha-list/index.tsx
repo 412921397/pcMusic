@@ -1,5 +1,9 @@
 import { memo, useEffect, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import classNames from "classnames";
 import { singerAlphas } from "@/utils/handle-data";
@@ -13,9 +17,9 @@ export default memo(function QLAlphaList() {
   const dispatch = useDispatch();
   /** 获取redux数据 */
   const { currentType, currentArea } = useSelector(
-    (state: any) => ({
-      currentType: state.getIn(["artist", "currentType"]),
-      currentArea: state.getIn(["artist", "currentArea"])
+    (state) => ({
+      currentType: state.artist.currentType,
+      currentArea: state.artist.currentArea
     }),
     shallowEqual
   );
@@ -32,7 +36,7 @@ export default memo(function QLAlphaList() {
   return (
     <AlphaListWrapper hasTop={+currentArea !== -1}>
       {+currentArea !== -1 &&
-        singerAlphas.map((item: any) => {
+        singerAlphas?.map((item) => {
           const isActive = currentAlpha === item;
           return (
             <div key={item} className={classNames("item", { active: isActive })}>

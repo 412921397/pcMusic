@@ -1,5 +1,9 @@
 import { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getHotRecommendsAction } from "../../store/actionCreators";
 
@@ -12,8 +16,8 @@ export default memo(function QLHotrecommend() {
 
   // redux hook
   const { hotRecommends } = useSelector(
-    (state: any) => ({
-      hotRecommends: state.getIn(["recommend", "hotRecommends"])
+    (state) => ({
+      hotRecommends: state.recommend.hotRecommends
     }),
     shallowEqual
   );
@@ -21,7 +25,7 @@ export default memo(function QLHotrecommend() {
 
   // other hook
   useEffect(() => {
-    dispatch(getHotRecommendsAction() as any);
+    dispatch(getHotRecommendsAction());
   }, [dispatch]);
 
   // 其他业务逻辑
@@ -34,8 +38,8 @@ export default memo(function QLHotrecommend() {
         link="/discover/songs"
       />
       <div className="recommend-list">
-        {hotRecommends.map((item: any) => {
-          return <QLSongsCover key={item.id} info={item} />;
+        {hotRecommends.map((item) => {
+          return <QLSongsCover key={item?.id} info={item} />;
         })}
       </div>
     </HotRecommendWrapper>

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useAppSelector as useSelector } from "@/store/hook";
 
 import QLSongOperationBar from "@/components/song-operation-bar";
 
@@ -8,9 +8,9 @@ import { formatMonthDay } from "@/utils/format-utils";
 
 export default memo(function QLRankingHeader() {
   const { playList, updateFrequency } = useSelector(
-    (state: any) => ({
-      playList: state.getIn(["ranking", "playList"]),
-      updateFrequency: state.getIn(["ranking", "updateFrequency"])
+    (state) => ({
+      playList: state.ranking.playList,
+      updateFrequency: state.ranking.updateFrequency
     }),
     shallowEqual
   );

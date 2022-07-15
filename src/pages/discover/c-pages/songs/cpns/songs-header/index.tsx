@@ -1,8 +1,13 @@
 import { memo, useState, useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
-import { changeCurrentCategoryAction, getSongCategoryListAction } from "../../store/actionCreators";
+import { getSongCategoryListAction } from "../../store/actionCreators";
+import { changeCurrentCategoryAction } from "../../store/songsSlice";
 
 import { HeaderWrapper, HeaderLeft, HeaderRight } from "./style";
 import QLSongsCateGory from "../songs-category";
@@ -19,8 +24,8 @@ export default memo(function QLSongsHeader() {
 
   /** 获取标题 */
   const { currentCategory } = useSelector(
-    (state: any) => ({
-      currentCategory: state.getIn(["songs", "currentCategory"])
+    (state) => ({
+      currentCategory: state.songs.currentCategory
     }),
     shallowEqual
   );
@@ -37,7 +42,7 @@ export default memo(function QLSongsHeader() {
       setActiveCount(name);
       setShowCategory(false);
       dispatch(changeCurrentCategoryAction(name));
-      dispatch(getSongCategoryListAction(0) as any);
+      dispatch(getSongCategoryListAction(0));
     },
     [dispatch]
   );

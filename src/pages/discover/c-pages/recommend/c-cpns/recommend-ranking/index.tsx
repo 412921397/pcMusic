@@ -1,5 +1,9 @@
 import { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  shallowEqual,
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector
+} from "@/store/hook";
 
 import { getTopListAction } from "../../store/actionCreators";
 import QLThemeHeaderRCM from "@/components/theme-header-rcm";
@@ -8,10 +12,10 @@ import { RankingWrapper } from "./style";
 
 export default memo(function QLHotranking() {
   const { upRanking, newRanking, originRanking } = useSelector(
-    (state: any) => ({
-      upRanking: state.getIn(["recommend", "upRanking"]),
-      newRanking: state.getIn(["recommend", "newRanking"]),
-      originRanking: state.getIn(["recommend", "originRanking"])
+    (state) => ({
+      upRanking: state.recommend.upRanking,
+      newRanking: state.recommend.newRanking,
+      originRanking: state.recommend.originRanking
     }),
     shallowEqual
   );
@@ -23,7 +27,7 @@ export default memo(function QLHotranking() {
     /** 3779629: 新歌榜 3778678: 热门榜 2884035: 原创榜 19723756: 飙升榜 */
     const songId = [3779629, 3778678, 2884035, 19723756];
     for (const songIdIndex of songId) {
-      dispatch(getTopListAction(songIdIndex) as any);
+      dispatch(getTopListAction(songIdIndex));
     }
   }, [dispatch]);
 
