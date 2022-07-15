@@ -1,4 +1,0 @@
-export const CHNAGE_TOP_LIST = "ranking/CHNAGE_TOP_LIST";
-export const CHANGE_CURRENT_INDEX = "rangking/CHANGE_CURRENT_INDEX";
-export const CHANGE_PLAY_LIST = "ranking/CHANGE_PLAY_LIST";
-export const CHANGE_UPDATEFREQUENCY = "ranking/CHANGE_UPDATEFREQUENCY";

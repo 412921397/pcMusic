@@ -5,9 +5,9 @@ interface IInitialState {
   hotRecommends: any[];
   newAlbums: any[];
 
-  upRanking: any;
-  newRanking: any;
-  originRanking: any;
+  upRanking: { [key: string]: any };
+  newRanking: { [key: string]: any };
+  originRanking: { [key: string]: any };
   settleSings: any[];
 }
 

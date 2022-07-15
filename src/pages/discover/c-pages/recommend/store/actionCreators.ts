@@ -18,10 +18,6 @@ import {
   getArtistLists
 } from "./recommendSlice";
 
-interface ITopListMap {
-  [key: string]: { payload: any; type: string };
-}
-
 /** 获取banner数据 */
 export const getTopBannerAction = (): AppThunk => {
   return (dispatch) => {
@@ -54,12 +50,17 @@ export const getTopListAction = (id: number): AppThunk => {
   return (dispatch) => {
     getTopList(id).then((res) => {
       /** 3779629: 新歌榜 3778678: 热门榜 2884035: 原创榜 19723756: 飙升榜 */
-      const topListMap: ITopListMap = {
-        3779629: dispatch(getnewRanking(res.playlist)),
-        19723756: dispatch(getupRanking(res.playlist)),
-        2884035: dispatch(getoriginRanking(res.playlist))
-      };
-      return topListMap[id];
+      switch (id) {
+        case 3779629:
+          dispatch(getnewRanking(res.playlist));
+          break;
+        case 19723756:
+          dispatch(getupRanking(res.playlist));
+          break;
+        case 2884035:
+          dispatch(getoriginRanking(res.playlist));
+          break;
+      }
     });
   };
 };

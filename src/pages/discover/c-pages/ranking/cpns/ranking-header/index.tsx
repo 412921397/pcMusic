@@ -29,10 +29,10 @@ export default memo(function QLRankingHeader() {
           <div className="update-f">（{updateFrequency}）</div>
         </div>
         <QLSongOperationBar
-          favorTitle={`(${playList.subscribedCount})`}
-          shareTitle={`(${playList.shareCount})`}
+          favorTitle={playList.subscribedCount && `(${playList.subscribedCount})`}
+          shareTitle={playList.subscribedCount && `(${playList?.shareCount})`}
           downloadTitle="下载"
-          commentTitle={`(${playList.commentCount})`}
+          commentTitle={playList.subscribedCount && `(${playList?.commentCount})`}
         />
       </div>
     </RankingHeaderWrapper>
