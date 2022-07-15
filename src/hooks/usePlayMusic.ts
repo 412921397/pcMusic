@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch as useDispatch } from "@/store/hook";
 
 import { getSongDetailAction } from "@/pages/player/store/actionCreators";
 
@@ -8,7 +8,7 @@ const usePlayMusic = () => {
 
   const playMusic = useCallback(
     (id: number) => {
-      dispatch(getSongDetailAction(id) as any);
+      dispatch(getSongDetailAction(id));
     },
     [dispatch]
   );
