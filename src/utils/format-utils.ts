@@ -11,7 +11,10 @@ export function getCount(count: number) {
 }
 
 /** 剪切图片尺寸大小 */
-export function getSizeImage(imgUrl: string, size?: number) {
+export function getSizeImage(imgUrl: string, size?: number, size2?: number) {
+  if (size2) {
+    return `${imgUrl}?param=${size}y${size2}`;
+  }
   return `${imgUrl}?param=${size}*${size}`;
 }
 

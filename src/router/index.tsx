@@ -13,6 +13,8 @@ const QlFriends = lazy(() => import("@/pages/friends"));
 const QLMine = lazy(() => import("@/pages/mine"));
 const QLPlayer = lazy(() => import("@/pages/player"));
 const QLSongsDetail = lazy(() => import("@/pages/songs-detail"));
+const QLSingerDetail = lazy(() => import("@/pages/singer-detail"));
+const QLSingerDetailVideo = lazy(() => import("@/pages/singer-detail-video"));
 
 const routes: RouteObject[] = [
   {
@@ -62,6 +64,14 @@ const routes: RouteObject[] = [
       {
         path: "/discover/songsDetail",
         element: <QLSongsDetail />
+      },
+      {
+        path: "/discover/singerDetail",
+        element: <QLSingerDetail />
+      },
+      {
+        path: "/discover/mv",
+        element: <QLSingerDetailVideo />
       }
     ]
   },

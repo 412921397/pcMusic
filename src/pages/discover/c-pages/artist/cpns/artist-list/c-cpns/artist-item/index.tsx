@@ -2,9 +2,10 @@ import { memo } from "react";
 
 import { getSizeImage } from "@/utils/format-utils";
 import { ItemWrapper } from "./style";
+import { NavLink } from "react-router-dom";
 
 interface QLArtistItemProps {
-  info: any;
+  info: { [key: string]: any };
   index: number;
 }
 
@@ -20,10 +21,10 @@ export default memo(function QLArtistItem(props: QLArtistItemProps) {
           <img src={getSizeImage(info?.img1v1Url, 130)} alt={info?.name} />
         </div>
       )}
-      <div className="info">
+      <NavLink className="info" to={`/discover/singerDetail?id=${info?.id}`}>
         <span className="name">{info?.name}</span>
         <i className="sprite_icon2 icon" />
-      </div>
+      </NavLink>
     </ItemWrapper>
   );
 });
