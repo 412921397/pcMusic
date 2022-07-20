@@ -44,7 +44,7 @@ export default memo(function QLSongsHeader() {
       dispatch(changeCurrentCategoryAction(name));
       dispatch(getSongCategoryListAction(0));
     },
-    [dispatch]
+    [activeCount, showCategory, dispatch]
   );
 
   return (

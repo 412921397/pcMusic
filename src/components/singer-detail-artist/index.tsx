@@ -16,7 +16,7 @@ export default memo(function QLSingerArtist() {
   };
 
   return (
-    <SingerArtistWrapper size={130} width={"700px"} bgp={"-845px"}>
+    <SingerArtistWrapper size={110} width={"700px"} bgp={"-570px"}>
       {hotAlbums.map((item) => {
         return (
           <div className="singer-box" key={item?.id}>

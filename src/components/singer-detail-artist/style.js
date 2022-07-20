@@ -4,20 +4,20 @@ export const SingerArtistWrapper = styled.div`
   width: ${(props) => props.width + "px"};
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   .singer-box {
   }
 
   .album-image {
     position: relative;
-    width: ${(props) => props.width + "px"};
+    width: 130px;
     height: ${(props) => props.size + "px"};
     overflow: hidden;
     margin-top: 15px;
 
     img {
-      width: ${(props) => props.size + "px"};
-      height: ${(props) => props.size + "px"};
+      width: 100px;
+      height: 100px;
     }
 
     .cover {
@@ -28,6 +28,10 @@ export const SingerArtistWrapper = styled.div`
       bottom: 0;
       background-position: 0 ${(props) => props.bgp};
       text-indent: -9999px;
+    }
+    .image_cover {
+      width: 130px;
+      height: 130px;
     }
   }
 

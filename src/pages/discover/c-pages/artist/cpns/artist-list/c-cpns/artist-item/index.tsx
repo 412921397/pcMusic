@@ -17,9 +17,9 @@ export default memo(function QLArtistItem(props: QLArtistItemProps) {
     <ItemWrapper>
       {/* 前10位歌手显示图片 */}
       {index < 10 && (
-        <div className="image">
+        <NavLink to={`/discover/singerDetail?id=${info?.id}`} className="image">
           <img src={getSizeImage(info?.img1v1Url, 130)} alt={info?.name} />
-        </div>
+        </NavLink>
       )}
       <NavLink className="info" to={`/discover/singerDetail?id=${info?.id}`}>
         <span className="name">{info?.name}</span>

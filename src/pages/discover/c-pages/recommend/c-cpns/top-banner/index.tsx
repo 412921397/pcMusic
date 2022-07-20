@@ -37,9 +37,12 @@ export default memo(function QLTopBanner() {
   }, [dispatch]);
 
   /** 只有当轮播发生切换的时候才会渲染更新 */
-  const bannerChange = useCallback((from: number, to: number) => {
-    setCurrent(to);
-  }, []);
+  const bannerChange = useCallback(
+    (from: number, to: number) => {
+      setCurrent(to);
+    },
+    [current]
+  );
 
   // 其他业务逻辑
   const bgImage = topBanners[current] && `${topBanners[current].imageUrl}?imageView&blur=40x20`;

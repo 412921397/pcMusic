@@ -26,15 +26,18 @@ export default memo(function QLSingerDetailList() {
   ];
   const singerInfo = <div>{artist?.briefDesc}</div>;
 
-  const onChange = useCallback((key: string) => {
-    const changePanel: IChangePanelMap = {
-      "1": <QLSingerList />,
-      "2": <QLSingerArtist />,
-      "3": <QLSingerMV />,
-      "4": singerInfo
-    };
-    return setPanels(changePanel[key]);
-  }, []);
+  const onChange = useCallback(
+    (key: string) => {
+      const changePanel: IChangePanelMap = {
+        "1": <QLSingerList />,
+        "2": <QLSingerArtist />,
+        "3": <QLSingerMV />,
+        "4": singerInfo
+      };
+      return setPanels(changePanel[key]);
+    },
+    [panels]
+  );
 
   return (
     <SingerListWrapper>
