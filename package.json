@@ -77,6 +77,12 @@
   },
   "devDependencies": {
     "@types/redux-immutable": "^4.0.3",
+    "cz-conventional-changelog": "3.3.0",
     "husky": "^8.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
