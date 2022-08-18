@@ -128,9 +128,7 @@ export default memo(function QLPlayerBar() {
 
   /** 播放或暂停歌曲 */
   const playMusic = useCallback(() => {
-    isPlaying
-      ? audioRef.current && audioRef.current.pause()
-      : audioRef.current && audioRef.current.play();
+    isPlaying ? audioRef.current?.pause() : audioRef.current?.play();
     setIsPlaying(!isPlaying);
   }, [isPlaying]);
 

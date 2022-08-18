@@ -7,13 +7,14 @@ import {
 
 import { getNewAlbumsAction } from "../../store/actionCreators";
 
+import type { CarouselRef } from "antd/lib/carousel/index.d";
 import { Carousel } from "antd";
 import QLThemeHeaderRCM from "@/components/theme-header-rcm";
 import QlAlbumCover from "@/components/album-cover";
 import { AlbumWrapper } from "./style";
 
 export default memo(function QLHotalbum() {
-  const pageRef: any = useRef(null);
+  const pageRef = useRef<CarouselRef>(null);
 
   /** 获取redux的数据 */
   const { newAlbums } = useSelector(
@@ -26,14 +27,14 @@ export default memo(function QLHotalbum() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getNewAlbumsAction(10) as any);
+    dispatch(getNewAlbumsAction(10));
   }, [dispatch]);
 
   return (
     <AlbumWrapper>
       <QLThemeHeaderRCM title="新碟上架" link="/discover/album" />
       <div className="content">
-        <div className="arrow arrow-left sprite_02" onClick={() => pageRef.current.prev()}></div>
+        <div className="arrow arrow-left sprite_02" onClick={() => pageRef.current?.prev()}></div>
         <div className="album">
           <Carousel dots={false} ref={pageRef}>
             {[0, 1].map((item: number) => {
@@ -49,7 +50,7 @@ export default memo(function QLHotalbum() {
             })}
           </Carousel>
         </div>
-        <div className="arrow arrow-right sprite_02" onClick={() => pageRef.current.next()}></div>
+        <div className="arrow arrow-right sprite_02" onClick={() => pageRef.current?.next()}></div>
       </div>
     </AlbumWrapper>
   );

@@ -7,7 +7,7 @@ import { scrollTo } from "@/utils/ui-helper";
 import { PannelWrapper } from "./style";
 
 export default memo(function QLLyricPanel() {
-  const panelRef: any = useRef();
+  const panelRef = useRef<HTMLDivElement>(null);
 
   /** 获取歌词 */
   const { lyricList, currentLyricIndex } = useSelector(
@@ -20,7 +20,7 @@ export default memo(function QLLyricPanel() {
 
   useEffect(() => {
     if (currentLyricIndex > 0 && currentLyricIndex < 3) return;
-    scrollTo(panelRef.current, (currentLyricIndex - 3) * 32, 300);
+    if (panelRef.current) scrollTo(panelRef.current, (currentLyricIndex - 3) * 32, 300);
   }, [currentLyricIndex]);
 
   return (

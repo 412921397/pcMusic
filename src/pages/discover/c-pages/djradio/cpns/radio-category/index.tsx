@@ -11,9 +11,10 @@ import { changeCurrentIdAction } from "../../store/djradioSlice";
 
 import { CategoryWrapper, CategoryContent, CategoryItemImage } from "./style";
 import { Carousel } from "antd";
+import type { CarouselRef } from "antd/lib/carousel/index.d";
 
 export default memo(function QLRadioCategory() {
-  const carouselRef: any = useRef();
+  const carouselRef = useRef<CarouselRef>(null);
   /** 请求redux的异步 */
   const dispatch = useDispatch();
   /** 发送请求 */
@@ -47,7 +48,7 @@ export default memo(function QLRadioCategory() {
 
   return (
     <CategoryWrapper>
-      <div className="arrow arrow-left" onClick={() => carouselRef.current.prev()} />
+      <div className="arrow arrow-left" onClick={() => carouselRef.current?.prev()} />
       <CategoryContent>
         <Carousel ref={carouselRef}>
           {Array(page)
@@ -74,7 +75,7 @@ export default memo(function QLRadioCategory() {
             })}
         </Carousel>
       </CategoryContent>
-      <div className="arrow arrow-right" onClick={() => carouselRef.current.next()} />
+      <div className="arrow arrow-right" onClick={() => carouselRef.current?.next()} />
     </CategoryWrapper>
   );
 });

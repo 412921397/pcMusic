@@ -9,6 +9,7 @@ import {
 import { getTopBannerAction } from "../../store/actionCreators";
 
 import { Carousel } from "antd";
+import type { CarouselRef } from "antd/lib/carousel/index.d";
 import { BannerWrapper, BannerControl, BannerLeft, BannerRight } from "./style";
 
 export default memo(function QLTopBanner() {
@@ -31,7 +32,7 @@ export default memo(function QLTopBanner() {
   const dispatch = useDispatch();
 
   /** 其他hooks */
-  const bannerRef: any = useRef(null);
+  const bannerRef = useRef<CarouselRef>(null);
   useEffect(() => {
     dispatch(getTopBannerAction());
   }, [dispatch]);
@@ -64,8 +65,8 @@ export default memo(function QLTopBanner() {
           </BannerLeft>
           <BannerRight></BannerRight>
           <BannerControl>
-            <div className="btn left" onClick={() => bannerRef.current.prev()} />
-            <div className="btn right" onClick={() => bannerRef.current.next()} />
+            <div className="btn left" onClick={() => bannerRef.current?.prev()} />
+            <div className="btn right" onClick={() => bannerRef.current?.next()} />
           </BannerControl>
         </div>
       </BannerWrapper>
