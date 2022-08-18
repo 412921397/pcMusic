@@ -53,7 +53,8 @@
     "eject": "react-scripts eject",
     "prettier": "prettier --write .",
     "postinstall": "husky install",
-    "prepare": "cd .. && husky install front/.husky"
+    "prepare": "cd .. && husky install front/.husky",
+    "commit": "cz"
   },
   "eslintConfig": {
     "extends": [
@@ -76,6 +77,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@types/redux-immutable": "^4.0.3",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^8.0.0"

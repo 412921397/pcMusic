@@ -15,6 +15,7 @@ import type { CarouselRef } from "antd/lib/carousel/index.d";
 
 export default memo(function QLRadioCategory() {
   const carouselRef = useRef<CarouselRef>(null);
+
   /** 请求redux的异步 */
   const dispatch = useDispatch();
   /** 发送请求 */
