@@ -1,15 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IInitialState {
-  topBanners: any[];
-  hotRecommends: any[];
-  newAlbums: any[];
-
-  upRanking: { [key: string]: any };
-  newRanking: { [key: string]: any };
-  originRanking: { [key: string]: any };
-  settleSings: any[];
-}
+import { IInitialState } from "./types";
 
 const initialState: IInitialState = {
   topBanners: [], // 轮播图

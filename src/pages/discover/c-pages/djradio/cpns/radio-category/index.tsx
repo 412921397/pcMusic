@@ -6,8 +6,11 @@ import {
 } from "@/store/hook";
 
 import classnames from "classnames";
-import { getDjRadioCatelistAction, getDjRadioRecommendAction } from "../../store/actionCreators";
-import { changeCurrentIdAction } from "../../store/djradioSlice";
+import {
+  getDjRadioCatelistAction,
+  getDjRadioRecommendAction,
+  changeCurrentIdAction
+} from "../../store";
 
 import { CategoryWrapper, CategoryContent, CategoryItemImage } from "./style";
 import { Carousel } from "antd";

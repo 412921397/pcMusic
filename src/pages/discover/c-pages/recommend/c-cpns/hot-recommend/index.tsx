@@ -5,7 +5,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getHotRecommendsAction } from "../../store/actionCreators";
+import { getHotRecommendsAction } from "../../store";
 
 import { HotRecommendWrapper } from "./style";
 import QLThemeHeaderRCM from "@/components/theme-header-rcm";

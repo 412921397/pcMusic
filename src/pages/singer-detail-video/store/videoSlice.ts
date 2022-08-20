@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IInitialState {
-  mvData: { [key: string]: any };
-  mvDetail: { [key: string]: any };
-  mvList: any[];
-}
+import { IInitialState } from "./types";
 
 const initialState: IInitialState = {
   mvData: {},

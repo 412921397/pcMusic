@@ -6,7 +6,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getSongCategoryListAction } from "../../store/actionCreators";
+import { getSongCategoryListAction } from "../../store";
 
 import { getSizeImage } from "@/utils/format-utils";
 

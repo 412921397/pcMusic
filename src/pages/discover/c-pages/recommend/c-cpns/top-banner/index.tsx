@@ -6,7 +6,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getTopBannerAction } from "../../store/actionCreators";
+import { getTopBannerAction } from "../../store";
 
 import { Carousel } from "antd";
 import type { CarouselRef } from "antd/lib/carousel/index.d";

@@ -7,7 +7,7 @@ import {
 
 import { getSizeImage } from "@/utils/format-utils";
 
-import { getArtistListAction } from "../../store/actionCreators";
+import { getArtistListAction } from "../../store";
 import { SetterSongerWrapper } from "./style";
 import QLThemeHeaderSmall from "@/components/theme-header-small";
 

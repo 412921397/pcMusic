@@ -5,7 +5,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getDjRadiosAction } from "../../store/actionCreators";
+import { getDjRadiosAction } from "../../store";
 import { RankingWraper } from "./style";
 import QLThemeHeaderNormal from "@/components/theme-header-normal";
 import QLRadioRankingCover from "@/components/radio-ranking-cover";

@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IInitialState {
-  topList: any[];
-  currentIndex: number;
-  playList: { [key: string]: any };
-  updateFrequency: string;
-}
+import { IInitialState } from "./types";
 
 const initialState: IInitialState = {
   topList: [], // 全部榜单

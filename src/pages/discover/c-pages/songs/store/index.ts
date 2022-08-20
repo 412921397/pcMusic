@@ -1,3 +1,18 @@
 import reducer from "./songsSlice";
 
-export { reducer };
+import {
+  changeCurrentCategoryAction,
+  getSongCategoryActions,
+  getSongCategoryLists
+} from "./songsSlice";
+
+import { getSongCategoryAction, getSongCategoryListAction } from "./actionCreators";
+
+export {
+  reducer,
+  changeCurrentCategoryAction,
+  getSongCategoryActions,
+  getSongCategoryLists,
+  getSongCategoryAction,
+  getSongCategoryListAction
+};

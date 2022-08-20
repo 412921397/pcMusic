@@ -6,8 +6,11 @@ import {
   shallowEqual
 } from "@/store/hook";
 
-import { changeCurrentIndexAndSongAction } from "../store/actionCreators";
-import { changeSequenceAction, changeCurrentLyricIndexAction } from "../store/playerSlice";
+import {
+  changeCurrentIndexAndSongAction,
+  changeSequenceAction,
+  changeCurrentLyricIndexAction
+} from "../store";
 import { getPlaySong, getSizeImage, formatMinuteSecond } from "@/utils/format-utils";
 
 import { Slider, message } from "antd";

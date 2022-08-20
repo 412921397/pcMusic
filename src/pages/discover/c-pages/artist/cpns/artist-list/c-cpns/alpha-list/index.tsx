@@ -7,7 +7,7 @@ import {
 
 import classNames from "classnames";
 import { singerAlphas } from "@/utils/handle-data";
-import { getArtistListAction } from "../../../../store/actionCreators";
+import { getArtistListAction } from "../../../../store";
 
 import { AlphaListWrapper } from "./style";
 

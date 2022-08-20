@@ -9,7 +9,7 @@ import usePlayMusic from "@/hooks/usePlayMusic";
 import { PlayerSongsWrapper } from "./style";
 import QLThemeHeaderPlayer from "@/components/theme-header-player";
 
-import { getSimiSongAction } from "../../store/actionCreators";
+import { getSimiSongAction } from "../../store";
 
 export default memo(function QLPlayerSongs() {
   /** 播放音乐 */

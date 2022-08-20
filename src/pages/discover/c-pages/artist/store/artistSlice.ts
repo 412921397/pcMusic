@@ -1,13 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-interface IInitialState {
-  currentArea: number;
-  currentType: {
-    name: string;
-    type: number;
-  };
-  artistList: any[];
-}
+import { IInitialState } from "./types";
 
 const initialState: IInitialState = {
   currentArea: -1,

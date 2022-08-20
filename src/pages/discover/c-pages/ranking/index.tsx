@@ -1,7 +1,7 @@
 import { memo, useEffect } from "react";
 import { useAppDispatch as useDispatch } from "@/store/hook";
 
-import { getTopListAction } from "./store/actionCreators";
+import { getTopListAction } from "./store";
 
 import { RankingWrapper, RankingLeft, RankingRight } from "./style";
 import QLTopRanking from "./cpns/top-ranking";

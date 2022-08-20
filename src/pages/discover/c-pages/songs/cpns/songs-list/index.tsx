@@ -5,7 +5,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getSongCategoryListAction } from "../../store/actionCreators";
+import { getSongCategoryListAction } from "../../store";
 
 import { SongListWrapper } from "./style";
 import QLThemeCover from "@/components/theme-cover";

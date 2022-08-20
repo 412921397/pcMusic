@@ -18,7 +18,7 @@ export default memo(function Discover() {
           })}
         </TopMenu>
       </div>
-      {/** 渲染子路由需要 调用hook：Outlet */}
+      {/** 渲染子路由需要 调用占位标签：Outlet */}
       <Outlet />
     </DiscoverWrapper>
   );

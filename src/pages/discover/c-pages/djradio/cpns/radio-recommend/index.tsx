@@ -5,7 +5,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getDjRadioRecommendAction } from "../../store/actionCreators";
+import { getDjRadioRecommendAction } from "../../store";
 import { RecommendWrapper } from "./style";
 import QLThemeHeaderNormal from "@/components/theme-header-normal";
 import QLRadioRecommendCover from "@/components/radio-recommend-cover";

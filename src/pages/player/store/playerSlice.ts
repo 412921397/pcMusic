@@ -1,15 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IInitialState {
-  playLists: any[];
-  currentSong: any;
-  currentSongIndex: number;
-  sequence: number;
-  lyricList: any[];
-  currentLyricIndex: number;
-  simiSongs: any[];
-  simiPlaylist: any[];
-}
+import { IInitialState } from "./types";
+
 const initialState: IInitialState = {
   playLists: [] /** 播放列表 */,
   currentSong: { id: "" } /** 当前播放歌曲详情 */,

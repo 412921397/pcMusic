@@ -7,7 +7,7 @@ import {
 } from "@/store/hook";
 
 import dayjs from "dayjs";
-import { coverPlayListAction } from "../../store/actionCreators";
+import { coverPlayListAction } from "../../store";
 import { getSizeImage } from "@/utils/format-utils";
 
 import { InfoWrapper, InfoLeft, InfoRight } from "./style";

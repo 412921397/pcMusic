@@ -6,8 +6,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getSongCategoryListAction } from "../../store/actionCreators";
-import { changeCurrentCategoryAction } from "../../store/songsSlice";
+import { getSongCategoryListAction, changeCurrentCategoryAction } from "../../store";
 
 import { HeaderWrapper, HeaderLeft, HeaderRight } from "./style";
 import QLSongsCateGory from "../songs-category";

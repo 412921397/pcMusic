@@ -5,7 +5,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getNewAlbumsAction } from "../../store/actionCreators";
+import { getNewAlbumsAction } from "../../store";
 
 import type { CarouselRef } from "antd/lib/carousel/index.d";
 import { Carousel } from "antd";

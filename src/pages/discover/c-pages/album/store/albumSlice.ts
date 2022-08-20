@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IInitialState } from "./types";
 
-interface IInitialState {
-  hotAlbums: any[];
-  topAlbums: any[];
-  total: number;
-}
 const initialState: IInitialState = {
   hotAlbums: [],
   topAlbums: [],

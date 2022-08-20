@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IInitialState {
-  category: any[];
-  currentCategory: string;
-  categorySongs: { [key: string]: any };
-}
+import { IInitialState } from "./types";
 
 const initialState: IInitialState = {
   category: [], //全部歌单

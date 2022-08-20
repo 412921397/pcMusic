@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IInitialState {
-  categories: any[];
-  currentId: number;
-  recommends: any[];
-  radios: any[];
-}
+import { IInitialState } from "./types";
 
 const initialState: IInitialState = {
   categories: [],

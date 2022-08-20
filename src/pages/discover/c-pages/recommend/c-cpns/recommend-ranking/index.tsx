@@ -5,7 +5,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getTopListAction } from "../../store/actionCreators";
+import { getTopListAction } from "../../store";
 import QLThemeHeaderRCM from "@/components/theme-header-rcm";
 import QLTopRanking from "@/components/top-ranking";
 import { RankingWrapper } from "./style";

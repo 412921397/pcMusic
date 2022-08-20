@@ -5,7 +5,7 @@ import {
   shallowEqual
 } from "@/store/hook";
 
-import { changeCurrentSongAction } from "../../../store/playerSlice";
+import { changeCurrentSongAction } from "../../../store";
 import { HeaderWrapper, HeaderLeft, HeaderRight } from "./style";
 
 export default memo(function PlayHeader() {

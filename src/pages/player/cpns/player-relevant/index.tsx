@@ -5,7 +5,7 @@ import {
   shallowEqual
 } from "@/store/hook";
 
-import { getSimiPlaylistAction } from "../../store/actionCreators";
+import { getSimiPlaylistAction } from "../../store";
 
 import { getSizeImage } from "@/utils/format-utils";
 

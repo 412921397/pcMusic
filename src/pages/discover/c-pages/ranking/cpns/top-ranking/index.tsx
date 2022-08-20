@@ -5,8 +5,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getRankingListAction } from "../../store/actionCreators";
-import { changeCurrentIndex, changeUpdateFrequency } from "../../store/rankingSlice";
+import { getRankingListAction, changeCurrentIndex, changeUpdateFrequency } from "../../store";
 
 import classNames from "classnames";
 import { TopRankingWrapper } from "./style";

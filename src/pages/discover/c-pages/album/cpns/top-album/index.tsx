@@ -5,7 +5,7 @@ import {
   useAppSelector as useSelector
 } from "@/store/hook";
 
-import { getTopAlbumsAction } from "../../store/actionCreators";
+import { getTopAlbumsAction } from "../../store";
 
 import { TopAlbumWrapper } from "./style";
 import QLThemeHeaderNormal from "@/components/theme-header-normal";

@@ -6,7 +6,7 @@ import {
 } from "@/store/hook";
 
 import classNames from "classnames";
-import { changeCurrentArea, changeCurrentType } from "../../store/artistSlice";
+import { changeCurrentArea, changeCurrentType } from "../../store";
 
 import { artistCategories } from "@/common/local-data";
 import { CategoryWrapper, CategoryItem } from "./style";

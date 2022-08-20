@@ -8,7 +8,7 @@ import {
   getArtistSongAction,
   getArtistAlbumAction,
   getArtistMVAction
-} from "./store/actionCreators";
+} from "./store";
 
 import { SingerDetailWrapper, SingerDetailLeft, SingerDetailRight } from "./style";
 import QLSingerDetailInfo from "./cpns/singer-detail-info";

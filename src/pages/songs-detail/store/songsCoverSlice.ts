@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IInitialState {
-  coverPlayList: { [key: string]: any };
-  subscribers: any[];
-  detailPlayList: any[];
-}
+import { IInitialState } from "./types";
 
 const initialState: IInitialState = {
   coverPlayList: {}, // 歌单详情

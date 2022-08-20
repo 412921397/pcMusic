@@ -1,3 +1,20 @@
 import reducer from "./rankingSlice";
 
-export { reducer };
+import {
+  changeCurrentIndex,
+  changeUpdateFrequency,
+  getTopLists,
+  getRankingLists
+} from "./rankingSlice";
+
+import { getTopListAction, getRankingListAction } from "./actionCreators";
+
+export {
+  reducer,
+  changeCurrentIndex,
+  changeUpdateFrequency,
+  getTopLists,
+  getRankingLists,
+  getTopListAction,
+  getRankingListAction
+};

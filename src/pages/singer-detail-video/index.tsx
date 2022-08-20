@@ -2,11 +2,7 @@ import { memo, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useAppDispatch as useDispatch } from "@/store/hook";
 
-import {
-  getMVURLAction,
-  getVideoDetailAction,
-  getRelatedAllvideoAction
-} from "./store/actionCreators";
+import { getMVURLAction, getVideoDetailAction, getRelatedAllvideoAction } from "./store";
 
 import { SingerVideoWrapper, SingerVideoLeft, SingerVideoRight } from "./style";
 import SingerMV from "./cpns/singer-mv";
