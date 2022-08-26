@@ -8,6 +8,7 @@ export const PlaybarWrapper = styled.div`
   height: 52px;
   background-position: 0 0;
   background-repeat: repeat;
+  z-index: 99999;
 
   .content {
     display: flex;
