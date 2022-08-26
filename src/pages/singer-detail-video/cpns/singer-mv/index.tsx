@@ -1,13 +1,11 @@
 import { memo, useRef } from "react";
 import { JolPlayer } from "jol-player";
-import type { JoLPlayerRef } from "jol-player";
+import type { JoLPlayerRef, qualityName } from "jol-player";
 import { shallowEqual, useAppSelector as useSelector } from "@/store/hook";
 
 import { InfoWrapper } from "./style";
-
-type IClarity = "SD" | "HD" | "FHD" | "BD";
 interface IRMap {
-  [key: number]: IClarity;
+  [key: number]: qualityName;
 }
 
 export default memo(function SingerMV() {
