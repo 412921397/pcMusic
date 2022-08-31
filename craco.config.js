@@ -7,5 +7,17 @@ module.exports = {
       "@": resolve("src"),
       components: resolve("src/components")
     }
+  },
+  devServer: {
+    port: 3000,
+    proxy: {
+      "/api": {
+        target: "http://localhost:8000",
+        pathRewrite: {
+          "^/api": ""
+        },
+        changeOrigin: true
+      }
+    }
   }
 };

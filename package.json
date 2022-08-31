@@ -28,7 +28,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "4.3.0",
-    "http-proxy-middleware": "^2.0.6",
     "husky": "^8.0.1",
     "jol-player": "^3.5.0",
     "lint-staged": "^13.0.0",
