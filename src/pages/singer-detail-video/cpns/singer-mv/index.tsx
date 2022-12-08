@@ -1,15 +1,21 @@
 import { memo, useRef } from "react";
+import type { FC, ReactNode, ElementRef } from "react";
 import { JolPlayer } from "jol-player";
-import type { JoLPlayerRef, qualityName } from "jol-player";
+import type { qualityName } from "jol-player";
 import { shallowEqual, useAppSelector as useSelector } from "@/store/hook";
 
 import { InfoWrapper } from "./style";
+
+interface IProps {
+  children?: ReactNode;
+}
+
 interface IRMap {
   [key: number]: qualityName;
 }
 
-export default memo(function SingerMV() {
-  const videoRef = useRef<JoLPlayerRef>(null);
+const SingerMV: FC<IProps> = () => {
+  const videoRef = useRef<ElementRef<typeof JolPlayer>>(null);
 
   /** 获取视频信息 */
   const mvInfo = useSelector((state) => state.video.mvData, shallowEqual);
@@ -38,4 +44,6 @@ export default memo(function SingerMV() {
       />
     </InfoWrapper>
   );
-});
+};
+
+export default memo(SingerMV);

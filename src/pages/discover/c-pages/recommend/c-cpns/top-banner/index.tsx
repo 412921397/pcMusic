@@ -1,18 +1,20 @@
-/* eslint-disable no-labels */
 import { memo, useState, useEffect, useRef, useCallback } from "react";
+import type { FC, ReactNode, ElementRef } from "react";
 import {
   shallowEqual,
   useAppDispatch as useDispatch,
   useAppSelector as useSelector
 } from "@/store/hook";
-
 import { getTopBannerAction } from "../../store";
 
 import { Carousel } from "antd";
-import type { CarouselRef } from "antd/lib/carousel/index.d";
 import { BannerWrapper, BannerControl, BannerLeft, BannerRight } from "./style";
 
-export default memo(function QLTopBanner() {
+interface IProps {
+  children?: ReactNode;
+}
+
+const QLTopBanner: FC<IProps> = () => {
   /** 当前组件的state */
   const [current, setCurrent] = useState(0);
 
@@ -32,7 +34,7 @@ export default memo(function QLTopBanner() {
   const dispatch = useDispatch();
 
   /** 其他hooks */
-  const bannerRef = useRef<CarouselRef>(null);
+  const bannerRef = useRef<ElementRef<typeof Carousel>>(null);
   useEffect(() => {
     dispatch(getTopBannerAction());
   }, [dispatch]);
@@ -72,4 +74,6 @@ export default memo(function QLTopBanner() {
       </BannerWrapper>
     </div>
   );
-});
+};
+
+export default memo(QLTopBanner);

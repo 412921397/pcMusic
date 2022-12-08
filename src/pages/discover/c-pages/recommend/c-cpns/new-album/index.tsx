@@ -1,4 +1,5 @@
 import { memo, useEffect, useRef } from "react";
+import type { FC, ReactNode, ElementRef } from "react";
 import {
   shallowEqual,
   useAppDispatch as useDispatch,
@@ -7,14 +8,17 @@ import {
 
 import { getNewAlbumsAction } from "../../store";
 
-import type { CarouselRef } from "antd/lib/carousel/index.d";
 import { Carousel } from "antd";
 import QLThemeHeaderRCM from "@/components/theme-header-rcm";
 import QlAlbumCover from "@/components/album-cover";
 import { AlbumWrapper } from "./style";
 
-export default memo(function QLHotalbum() {
-  const pageRef = useRef<CarouselRef>(null);
+interface IProps {
+  children?: ReactNode;
+}
+
+const QLHotalbum: FC<IProps> = () => {
+  const pageRef = useRef<ElementRef<typeof Carousel>>(null);
 
   /** 获取redux的数据 */
   const { newAlbums } = useSelector(
@@ -54,4 +58,6 @@ export default memo(function QLHotalbum() {
       </div>
     </AlbumWrapper>
   );
-});
+};
+
+export default memo(QLHotalbum);

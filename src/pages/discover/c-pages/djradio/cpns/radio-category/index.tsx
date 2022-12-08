@@ -1,4 +1,5 @@
 import { memo, useCallback, useEffect, useRef } from "react";
+import type { FC, ReactNode, ElementRef } from "react";
 import {
   shallowEqual,
   useAppDispatch as useDispatch,
@@ -14,10 +15,13 @@ import {
 
 import { CategoryWrapper, CategoryContent, CategoryItemImage } from "./style";
 import { Carousel } from "antd";
-import type { CarouselRef } from "antd/lib/carousel/index.d";
 
-export default memo(function QLRadioCategory() {
-  const carouselRef = useRef<CarouselRef>(null);
+interface IProps {
+  children?: ReactNode;
+}
+
+const QLRadioCategory: FC<IProps> = () => {
+  const carouselRef = useRef<ElementRef<typeof Carousel>>(null);
 
   /** 请求redux的异步 */
   const dispatch = useDispatch();
@@ -82,4 +86,6 @@ export default memo(function QLRadioCategory() {
       <div className="arrow arrow-right" onClick={() => carouselRef.current?.next()} />
     </CategoryWrapper>
   );
-});
+};
+
+export default memo(QLRadioCategory);
