@@ -6,4 +6,8 @@
 **/*.svg
 **/*.sh
 
+/package-lock.json
+/package.json
+/pnpm-lock.yaml
+
 /public/*
